@@ -6,6 +6,7 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\RunningBidIndexController;
 use App\Http\Controllers\RunningBidUserController;
 use App\Http\Controllers\MyBidController;
+use App\Http\Controllers\CreateBidController;
 
 
 Auth::routes();
@@ -17,3 +18,4 @@ Route::get('/userDashboard',[UserDashboardController::class, 'index']);
 Route::get('/runningBidIndex',[RunningBidIndexController::class, 'index']);
 Route::get('/runningBidUser',[RunningBidUserController::class, 'index']);
 Route::get('/myBid',[MyBidController::class, 'index']);
+Route::get('/createBid',[CreateBidController::class, 'index']);

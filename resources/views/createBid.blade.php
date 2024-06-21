@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Home</title>
+    <title>Create Bid</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -35,46 +35,32 @@
     <br>
 
     <div class="container">
-  <h1 class="text-center">BIDDING SYSTEM</h1>
-  <br>
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <strong>Welcome Shajibul Hasan Soaib!</strong>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Every Bid 2 days live!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
+            </button>
         </div>
-  <br>
-     <div class="row">
-        <div class="col">
-          <div class="card bg-primary text-light" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Total Bid</h5>
-              <p class="card-text">00</p>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col">
-          <div class="card bg-success text-light" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Total Running Bid</h5>
-              <p class="card-text">00</p>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col">
-          <div class="card bg-danger text-light" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Total My Bid</h5>
-              <p class="card-text">00</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
-      
+        <h4>Create Bid</h4>
+        <form action="" method="post">
+                <div class="form-group">
+                    <label for="name">Product Name:</label>
+                    <input type="text" class="form-control" value="" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="description">Product Description:</label>
+                    <input type="text" class="form-control" value="" id="description" name="description">
+                </div>
+                <div class="form-group">
+                    <label for="start">Starting Price:</label>
+                    <input type="text" class="form-control" value="" id="start" name="start">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" name="btnCreate">Start Bid</button>
+                </div>
+            </form>
+        
+    </div>      
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
