@@ -18,7 +18,7 @@
                 <a class="nav-link" href="/userDashboard">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Create Bid</a>
+                <a class="nav-link" href="createBid">Create Bid</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="runningBidUser">Running Bid</a>
