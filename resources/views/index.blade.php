@@ -19,7 +19,7 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/home">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/runningBidIndex">Running Bid</a>
@@ -44,7 +44,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-  <br>
+<br>
      <div class="row">
         <div class="col">
           <div class="card bg-primary text-light" style="width: 18rem;">
@@ -63,7 +63,6 @@
             </div>
           </div>
         </div>
-  
         <div class="col">
           <div class="card bg-danger text-light" style="width: 18rem;">
             <div class="card-body">
@@ -75,6 +74,5 @@
       </div>
     </div>
 </div>
-
 </body>
 </html>
