@@ -8,7 +8,7 @@
   </head>
   <body>
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <a class="navbar-brand" href="/userDashboard">User Dashboard</a>
+        <a class="navbar-brand" href="/userDashboard">Bidding System</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -16,6 +16,9 @@
             <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Running Bid</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="register">Register</a>
