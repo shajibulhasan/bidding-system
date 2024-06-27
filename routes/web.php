@@ -8,7 +8,7 @@ use App\Http\Controllers\RunningBidUserController;
 use App\Http\Controllers\MyBidController;
 use App\Http\Controllers\CreateBidController;
 use App\Http\Controllers\CustomAuthController;
-
+use App\Http\Controllers\AdminController;
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -19,6 +19,8 @@ Route::get('/runningBidIndex',[RunningBidIndexController::class, 'index']);
 Route::get('/runningBidUser',[RunningBidUserController::class, 'index']);
 Route::get('/myBid',[MyBidController::class, 'index']);
 Route::get('/createBid',[CreateBidController::class, 'index']);
+Route::get('/admin',[AdminController::class, 'index']);
+
 
 
 //registration and login 
