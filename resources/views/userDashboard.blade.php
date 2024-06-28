@@ -34,7 +34,7 @@
     </nav>
     <br>
 
-    <div class="container">
+<div class="container">
   <h1 class="text-center">BIDDING SYSTEM</h1>
   <br>
   <div class="alert alert-warning alert-dismissible fade show" role="alert">
