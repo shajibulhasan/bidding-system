@@ -35,28 +35,26 @@
     <br>
 
     <div class="container">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Every Bid 2 days live!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <h4>Create Bid</h4>
+        <h3>Create Bid</h3>
         <form action="" method="post">
                 <div class="form-group">
                     <label for="name">Product Name:</label>
-                    <input type="text" class="form-control" value="" id="name" name="name">
+                    <input type="text" placeholder="Product Name" class="form-control" value="" id="name" name="name">
                 </div>
                 <div class="form-group">
                     <label for="description">Product Description:</label>
-                    <input type="text" class="form-control" value="" id="description" name="description">
+                    <input type="text" placeholder="Product Description" class="form-control" value="" id="description" name="description">
                 </div>
                 <div class="form-group">
-                    <label for="start">Starting Price:</label>
-                    <input type="text" class="form-control" value="" id="start" name="start">
+                    <label for="price">Starting Price:</label>
+                    <input type="number" placeholder="Starting Price" class="form-control" value="" id="price" name="price">
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary" name="btnCreate">Start Bid</button>
+                    <label for="running">How many days running this bid:</label>
+                    <input type="number" placeholder="How many days running this bid" class="form-control" value="" id="running" name="running">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" name="btnCreate">Request Bid</button>
                 </div>
             </form>
         
