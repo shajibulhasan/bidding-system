@@ -43,10 +43,12 @@
             <th>Product Description</th>
             <th>Starting Price</th>
             <th>Bidding Price</th>
+            <th>How Many Days</th>
             <th>Action</th>                    
             </thead>
             <tbody>
             <tr>
+                <td>00</td>
                 <td>00</td>
                 <td>00</td>
                 <td>00</td>

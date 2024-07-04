@@ -43,9 +43,11 @@
             <th>Product Description</th>
             <th>Starting Price</th>
             <th>End Price</th>                   
+            <th>Status</th>                   
             </thead>
             <tbody>
             <tr>
+                <td>00</td>
                 <td>00</td>
                 <td>00</td>
                 <td>00</td>
