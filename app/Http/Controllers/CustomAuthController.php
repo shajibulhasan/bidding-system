@@ -44,13 +44,13 @@ class CustomAuthController extends Controller
     {  
         $request->validate([
             'name' => 'required',
+            'phone_number' => 'required|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
            
         $data = $request->all();
         $check = $this->create($data);
-         
         return redirect("login")->withSuccess('You have signed-in');
     }
 
@@ -59,6 +59,7 @@ class CustomAuthController extends Controller
     {
       return User::create([
         'name' => $data['name'],
+        'phone_number' => $data['phone_number'],
         'email' => $data['email'],
         'password' => Hash::make($data['password'])
       ]);
