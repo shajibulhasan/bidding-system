@@ -27,7 +27,7 @@
                 <a class="nav-link" href="myBid">My Bid</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/">Logout</a>
+                <a class="nav-link" href="login">Logout</a>
             </li>    
             </ul>
         </div>  
