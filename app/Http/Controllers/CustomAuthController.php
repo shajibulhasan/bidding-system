@@ -46,8 +46,14 @@ class CustomAuthController extends Controller
             'name' => 'required',
             'phone_number' => 'required|unique:users',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-        ]);
+            'password' => 'required',
+        ],[
+            'name.required' => 'name is required',
+            'phone_number.required' => 'phone_number is required',
+            'email.required' => 'email is required',
+            'password.required' => 'password is required',
+
+    ]);
            
         $data = $request->all();
         $check = $this->create($data);
@@ -58,6 +64,7 @@ class CustomAuthController extends Controller
     public function create(array $data)
     {
       return User::create([
+
         'name' => $data['name'],
         'phone_number' => $data['phone_number'],
         'email' => $data['email'],
@@ -68,7 +75,7 @@ class CustomAuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-            return view('dashboard');
+            return view('login');
         }
   
         return redirect("login")->withSuccess('You are not allowed to access');
@@ -76,8 +83,7 @@ class CustomAuthController extends Controller
 
     public function signOut() {
         Session::flush();
-        Auth::logout();
-  
+        Auth::logout(); 
         return Redirect('login');
     }
 }

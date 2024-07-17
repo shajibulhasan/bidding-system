@@ -42,36 +42,31 @@
                     <h3 class="card-header text-center">Register User</h3>
                     <div class="card-body">
 
-                        <form action="{{ route('register.custom') }}" method="POST">
+                        <form action="{{ route('register.post') }}" method="POST">
                             @csrf
-                            <div class="form-group mb-3">
-                                <input type="text" placeholder="Name" id="name" class="form-control" name="name"
-                                    required autofocus>
-                                @if ($errors->has('name'))
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
-                                @endif
+                            <div class="col-12">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    value="{{old('name')}}">
+                                @error('name')<small class="text-danger">{{$message}}</small>@enderror
                             </div>
-                            <div class="form-group mb-3">
-                                <input type="text" placeholder="Phone Number" id="phone_number" class="form-control"
-                                    name="phone_number" required autofocus>
-                                @if ($errors->has('phone_number'))
-                                <span class="text-danger">{{ $errors->first('phone_number') }}</span>
-                                @endif
+                            <div class="col-12">
+                                <label for="phone_number" class="form-label">Phone</label>
+                                <input type="text" class="form-control" id="phone" name="phone_number"
+                                    value="{{old('phone_number')}}">
+                                @error('phone_number')<small class="text-danger">{{$message}}</small>@enderror
                             </div>
-                            <div class="form-group mb-3">
-                                <input type="text" placeholder="Email" id="email_address" class="form-control"
-                                    name="email" required autofocus>
-                                @if ($errors->has('email'))
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                                @endif
+                            <div class="col-12">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    value="{{old('email')}}">
+                                @error('email')<small class="text-danger">{{$message}}</small>@enderror
                             </div>
 
-                            <div class="form-group mb-3">
-                                <input type="password" placeholder="Password" id="password" class="form-control"
-                                    name="password" required>
-                                @if ($errors->has('password'))
-                                <span class="text-danger">{{ $errors->first('password') }}</span>
-                                @endif
+                            <div class="col-12">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password">
+                                @error('password')<small class="text-danger">{{$message}}</small>@enderror
                             </div>
                             
                             <div class="form-group mb-3">
