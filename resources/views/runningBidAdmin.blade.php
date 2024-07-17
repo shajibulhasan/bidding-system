@@ -27,7 +27,7 @@
                 <a class="nav-link" href="requestedBid">Requested Bid</a>
             </li> 
             <li class="nav-item">
-                <a class="nav-link" href="/">Logout</a>
+                <a class="nav-link" href="{{ route('signout')}}">Logout</a>
             </li>  
             </ul>
         </div>  
