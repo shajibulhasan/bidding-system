@@ -18,7 +18,7 @@
                 <a class="nav-link" href="/userDashboard">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="createBid">Create Bid</a>
+                <a class="nav-link" href="create">Create Bid</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="runningBidUser">Running Bid</a>
@@ -36,22 +36,27 @@
 
     <div class="container">
         <h3>Create Bid</h3>
-        <form action="" method="post">
+            <form action="{{ route('createbid.post') }}" method="post" enctype="multipart/form-data">
+            @csrf
                 <div class="form-group">
-                    <label for="name">Product Name:</label>
+                    <label for="name"><b>Product Name:</b></label>
                     <input type="text" placeholder="Product Name" class="form-control" value="" id="name" name="name">
                 </div>
                 <div class="form-group">
-                    <label for="description">Product Description:</label>
+                    <label for="description"><b>Product Description:</b></label>
                     <input type="text" placeholder="Product Description" class="form-control" value="" id="description" name="description">
                 </div>
                 <div class="form-group">
-                    <label for="price">Starting Price:</label>
-                    <input type="number" placeholder="Starting Price" class="form-control" value="" id="price" name="price">
+                    <label for="price"><b>Biding Price:</b></label>
+                    <input type="number" placeholder="Biding Price" class="form-control" value="" id="price" name="price">
                 </div>
                 <div class="form-group">
-                    <label for="running">How many days running this bid:</label>
-                    <input type="number" placeholder="How many days running this bid" class="form-control" value="" id="running" name="running">
+                    <label for="start"><b>Starting Bid:</b></label>
+                    <input type="date" placeholder="Starting Bid" class="form-control" value="" id="start" name="start">
+                </div>
+                <div class="form-group">
+                    <label for="end"><b>Ending Bid:</b></label>
+                    <input type="date" placeholder="Ending Bid" class="form-control" value="" id="end" name="end">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary" name="btnCreate">Request Bid</button>

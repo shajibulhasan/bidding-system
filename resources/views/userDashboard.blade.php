@@ -18,7 +18,7 @@
                 <a class="nav-link" href="/userDashboard">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="createBid">Create Bid</a>
+                <a class="nav-link" href="create">Create Bid</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="runningBidUser">Running Bid</a>
@@ -38,7 +38,7 @@
   <h1 class="text-center">BIDDING SYSTEM</h1>
   <br>
   <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <strong>Welcome Shajibul Hasan Soaib!</strong>
+          <strong>Welcome {{ Auth::user()->name }}!</strong>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

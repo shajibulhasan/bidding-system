@@ -22,7 +22,9 @@ Route::get('/runningBidIndex',[RunningBidIndexController::class, 'index']);
 Route::get('/runningBidUser',[RunningBidUserController::class, 'index']);
 Route::get('/runningBidAdmin',[RunningBidAdminController::class, 'index']);
 Route::get('/myBid',[MyBidController::class, 'index']);
-Route::get('/createBid',[CreateBidController::class, 'index']);
+
+Route::view('/create', 'createBid')->name('displayBid');
+Route::post('/createBid',[UserDashboardController::class, 'requestBid'])->name('createbid.post');
 Route::get('/admin',[AdminController::class, 'index']);
 Route::get('/totalBid',[TotalBidController::class, 'index']);
 Route::get('/requestedBid',[RequestedBidController::class, 'index']);

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Hash;
+use Session;
+use Illuminate\Support\Facades\Auth;
 
 class UserDashboardController extends Controller
 {
@@ -14,6 +18,20 @@ class UserDashboardController extends Controller
         return view('userDashboard');
     }
 
+    public function requestBid(Request $req)
+    {
+        $user_id = Auth::user()->id;
+        $bid_create = DB::table('bid')->insert([
+            'name' => $req->name,
+            'description' => $req->description,
+            'starting_price' => $req->price,
+            'starting_price' => $req->price,
+            'starting_date' => $req->start,
+            'ending_date' => $req->end,
+            'user_id' => $user_id,
+        ]);
+
+    }
     /**
      * Show the form for creating a new resource.
      */
