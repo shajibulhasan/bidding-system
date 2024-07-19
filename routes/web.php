@@ -19,10 +19,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/',[IndexController::class, 'index']);
 Route::get('/userDashboard',[UserDashboardController::class, 'index']);
 Route::get('/runningBidIndex',[RunningBidIndexController::class, 'index']);
-Route::get('/runningBidUser',[RunningBidUserController::class, 'index']);
 Route::get('/runningBidAdmin',[RunningBidAdminController::class, 'index']);
-Route::get('/myBid',[MyBidController::class, 'index']);
 
+Route::post('/runningBidUser/{id}', [UserDashboardController::class, 'biddingPrice'])->name('biddingprice.post'); 
+Route::get('/runningBidUser',[UserDashboardController::class, 'runningBid'])->name('runningBidUser');
+Route::get('/myBid',[UserDashboardController::class, 'myBid']);
 Route::view('/create', 'createBid')->name('displayBid');
 Route::post('/createBid',[UserDashboardController::class, 'requestBid'])->name('createbid.post');
 Route::get('/admin',[AdminController::class, 'index']);

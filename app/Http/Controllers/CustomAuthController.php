@@ -26,8 +26,15 @@ class CustomAuthController extends Controller
     
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('userDashboard')
+            if(Auth::user()->role == 'admin'){
+                return redirect()->intended('admin')
                         ->withSuccess('Signed in');
+            }
+            else{
+                return redirect()->intended('userDashboard')
+                ->withSuccess('Signed in'); 
+            }
+            
         }
         $validator['emailPassword'] = 'Email address or password is incorrect.';
         return redirect("login")->withErrors($validator);

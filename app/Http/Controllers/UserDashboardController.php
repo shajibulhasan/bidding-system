@@ -25,12 +25,45 @@ class UserDashboardController extends Controller
             'name' => $req->name,
             'description' => $req->description,
             'starting_price' => $req->price,
-            'starting_price' => $req->price,
             'starting_date' => $req->start,
             'ending_date' => $req->end,
             'user_id' => $user_id,
         ]);
+        if($bid_create){
+            return redirect()->route('myBid');
+        }
+        else{
+            echo "Error!";
+        }
 
+    }
+    public function biddingPrice(Request $req, string $id)
+    {
+        $bid_update = DB::table('bid')->where('id',$id)->update([
+            'ending_price' => $req->price,
+        ]);
+        if($bid_update){
+            return redirect()->route('runningBidUser');
+        }
+        else{
+            echo "Error!";
+        }
+
+    }
+
+    
+
+    public function myBid()
+    {
+        $user_id = Auth::user()->id;
+        $mybid = DB::table('bid')->where('user_id',$user_id)->get(); 
+        return view('myBid',['data'=>$mybid]);
+    }
+
+    public function runningBid()
+    {
+        $mybid = DB::table('bid')->where('status','running')->get(); 
+        return view('runningBidUser',['data'=>$mybid]);
     }
     /**
      * Show the form for creating a new resource.
