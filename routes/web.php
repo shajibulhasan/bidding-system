@@ -17,14 +17,14 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
 Route::get('/',[IndexController::class, 'index']);
-Route::get('/userDashboard',[UserDashboardController::class, 'index']);
+Route::get('/userDashboard',[UserDashboardController::class, 'index'])->name('userDashboard');
 Route::get('/runningBidIndex',[RunningBidIndexController::class, 'index']);
 Route::get('/runningBidAdmin',[RunningBidAdminController::class, 'index']);
 
 Route::post('/runningBidUser/{id}', [UserDashboardController::class, 'biddingPrice'])->name('biddingprice.post'); 
 Route::get('/runningBidUser',[UserDashboardController::class, 'runningBid'])->name('runningBidUser');
-Route::get('/myBid',[UserDashboardController::class, 'myBid']);
-Route::view('/create', 'createBid')->name('displayBid');
+Route::get('/myBid',[UserDashboardController::class, 'myBid'])->name('myBid');
+Route::view('/create', 'createBid')->name('create');
 Route::post('/createBid',[UserDashboardController::class, 'requestBid'])->name('createbid.post');
 Route::get('/admin',[AdminController::class, 'index']);
 Route::get('/totalBid',[TotalBidController::class, 'index']);

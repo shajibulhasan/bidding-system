@@ -13,22 +13,22 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/userDashboard">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="createBid">Create Bid</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="runningBidUser">Running Bid</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="myBid">My Bid</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('signout')}}">Logout</a>
-            </li>    
+        <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('userDashboard')}}">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('create')}}">Create Bid</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('runningBidUser')}}">Running Bid</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('myBid')}}">My Bid</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href=" {{ route('signout')}} ">Logout</a>
+              </li>    
             </ul>
         </div>  
     </nav>
