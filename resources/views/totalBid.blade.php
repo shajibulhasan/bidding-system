@@ -8,54 +8,62 @@
   </head>
   <body>
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <a class="navbar-brand" href="/userDashboard">Admin Dashboard</a>
+        <a class="navbar-brand" href="{{ route('admin')}}">Admin Dashboard</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/admin">Home</a>
+                <a class="nav-link" href="{{ route('admin')}}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="runningBidAdmin">Running Bid</a>
+                <a class="nav-link" href="{{ route('runningBidAdmin')}}">Running Bid</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="totalBid">Total Bid</a>
+                <a class="nav-link" href="{{ route('totalBid')}}">Total Bid</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="requestedBid">Requested Bid</a>
-            </li>   
+                <a class="nav-link" href="{{ route('requestedBid')}}">Requested Bid</a>
+            </li> 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('signout')}}">Logout</a>
-            </li>
+            </li>      
             </ul>
         </div>  
     </nav>
     <br>
 
     <div class="container">
-        <h4>Total Bid</h4>
-        <table class="table table-striped">
-            <thead>
-                <th>Bid ID</th>
-                <th>Product Name</th>
-                <th>Product Description</th>
-                <th>Starting Price</th>
-                <th>Ending Price</th>
-                <th>Status</th>                    
-            </thead>
-            <tbody>
-                <tr>
-                    <td>00</td>
-                    <td>00</td>
-                    <td>00</td>
-                    <td>00</td>
-                    <td>00</td>
-                    <th>00</th>
-                </tr>
-            </tbody>
-        </table>
+        <div class="card">
+            <h4 class="card-header text-center">Total Bid</h4>
+            <table class="table table-striped">
+                <thead>
+                    <th>Bid ID</th>
+                    <th>Product Name</th>
+                    <th>Product Description</th>
+                    <th>Starting Price</th>
+                    <th>Ending Price</th>
+                    <th>Starting Price</th>
+                    <th>Ending Price</th>
+                    <th>Status</th>                    
+                </thead>
+                <tbody>
+                @foreach($data as $mybid=>$bid)
+                    <tr>
+                        <td>{{$bid->id}}</td>
+                        <td>{{$bid->name}}</td>
+                        <td>{{$bid->description}}</td>
+                        <td>{{$bid->starting_price}}</td>
+                        <td>{{$bid->ending_price}}</td>
+                        <td>{{$bid->starting_date}}</td>
+                        <td>{{$bid->ending_date}}</td>
+                        <td>{{$bid->status}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>      
 
 

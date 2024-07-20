@@ -15,7 +15,11 @@ class UserDashboardController extends Controller
      */
     public function index()
     {
-        return view('userDashboard');
+        $user_id = Auth::user()->id;
+        $totalBid = DB::table('bid')->count('id'); 
+        $runningBid = DB::table('bid')->where('status','running')->count('id'); 
+        $myBid = DB::table('bid')->where('user_id',$user_id )->count('id'); 
+        return view('userDashboard',['totalBid'=>$totalBid, 'runningBid'=>$runningBid, 'myBid'=>$myBid]);
     }
 
     public function requestBid(Request $req)

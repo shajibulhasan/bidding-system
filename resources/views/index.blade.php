@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Home</title>
+  <title>Guest Dashboard</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -50,7 +50,7 @@
           <div class="card bg-primary text-light" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">Total Bid</h5>
-              <p class="card-text">00</p>
+              <p class="card-text">{{$totalBid}}</p>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@
           <div class="card bg-success text-light" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">Total Running Bid</h5>
-              <p class="card-text">00</p>
+              <p class="card-text">{{$runningBid}}</p>
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@
           <div class="card bg-danger text-light" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">Total Users</h5>
-              <p class="card-text">00</p>
+              <p class="card-text">{{$totalUser}}</p>
             </div>
           </div>
         </div>

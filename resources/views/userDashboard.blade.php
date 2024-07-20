@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Home</title>
+    <title>User Dashboard</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -47,27 +47,27 @@
      <div class="row">
         <div class="col">
           <div class="card bg-primary text-light" style="width: 18rem;">
-            <div class="card-body">
+            <div class="card-body text-center">
               <h5 class="card-title">Total Bid</h5>
-              <p class="card-text">00</p>
+              <h4 class="card-text">{{$totalBid}}</h4>
             </div>
           </div>
         </div>
   
         <div class="col">
           <div class="card bg-success text-light" style="width: 18rem;">
-            <div class="card-body">
+            <div class="card-body text-center">
               <h5 class="card-title">Total Running Bid</h5>
-              <p class="card-text">00</p>
+              <h4 class="card-text">{{$runningBid}}</h4>
             </div>
           </div>
         </div>
   
         <div class="col">
           <div class="card bg-danger text-light" style="width: 18rem;">
-            <div class="card-body">
+            <div class="card-body text-center">
               <h5 class="card-title">Total My Bid</h5>
-              <p class="card-text">00</p>
+              <h4 class="card-text">{{$myBid}}</h4>
             </div>
           </div>
         </div>

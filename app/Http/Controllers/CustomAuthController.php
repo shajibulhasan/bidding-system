@@ -16,6 +16,13 @@ class CustomAuthController extends Controller
     {
         return view('auth.login');
     }
+    public function guestDashboard()
+    {
+        $totalBid = DB::table('bid')->count('id'); 
+        $runningBid = DB::table('bid')->where('status','running')->count('id'); 
+        $totalUser = DB::table('users')->where('role','user')->count('id');
+        return view('index',['totalBid'=>$totalBid, 'runningBid'=>$runningBid, 'totalUser'=>$totalUser]);
+    }
 
     public function customLogin(Request $request)
     {

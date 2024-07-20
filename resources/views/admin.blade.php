@@ -8,23 +8,23 @@
   </head>
   <body>
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <a class="navbar-brand" href="/userDashboard">Admin Dashboard</a>
+        <a class="navbar-brand" href="{{ route('admin')}}">Admin Dashboard</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/admin">Home</a>
+                <a class="nav-link" href="{{ route('admin')}}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="runningBidAdmin">Running Bid</a>
+                <a class="nav-link" href="{{ route('runningBidAdmin')}}">Running Bid</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="totalBid">Total Bid</a>
+                <a class="nav-link" href="{{ route('totalBid')}}">Total Bid</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="requestedBid">Requested Bid</a>
+                <a class="nav-link" href="{{ route('requestedBid')}}">Requested Bid</a>
             </li> 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('signout')}}">Logout</a>
@@ -46,27 +46,27 @@
      <div class="row">
         <div class="col">
           <div class="card bg-primary text-light" style="width: 18rem;">
-            <div class="card-body">
+            <div class="card-body text-center">
               <h5 class="card-title">Total Bid</h5>
-              <p class="card-text">00</p>
+              <h4 class="card-text">{{$totalBid}}</h4>
             </div>
           </div>
         </div>
   
         <div class="col">
           <div class="card bg-success text-light" style="width: 18rem;">
-            <div class="card-body">
+            <div class="card-body text-center">
               <h5 class="card-title">Total Running Bid</h5>
-              <p class="card-text">00</p>
+              <h4 class="card-text">{{$runningBid}}</h4>
             </div>
           </div>
         </div>
   
         <div class="col">
           <div class="card bg-danger text-light" style="width: 18rem;">
-            <div class="card-body">
+            <div class="card-body text-center">
               <h5 class="card-title">Total Requested Bid</h5>
-              <p class="card-text">00</p>
+              <h4 class="card-text">{{$requestBid}}</h4>
             </div>
           </div>
         </div>
