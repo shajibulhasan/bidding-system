@@ -33,37 +33,46 @@
         </div>  
     </nav>
     <br>
-
+<main class="signup-form">    
     <div class="container">
-        <h3>Create Bid</h3>
-            <form action="{{ route('createbid.post') }}" method="post" enctype="multipart/form-data">
-            @csrf
-                <div class="form-group">
-                    <label for="name"><b>Product Name:</b></label>
-                    <input type="text" placeholder="Product Name" class="form-control" value="" id="name" name="name">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <h3 class="card-header text-center">Create Bid</h3>
+                    <div class="card-body">
+                        <form action="{{ route('createbid.post') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                            <div class="col-12">
+                                <label for="name"><b>Product Name:</b></label>
+                                <input type="text" placeholder="Product Name" class="form-control" value="" id="name" name="name">
+                            </div>
+                            <div class="col-12">
+                                <label for="description"><b>Product Description:</b></label>
+                                <input type="text" placeholder="Product Description" class="form-control" value="" id="description" name="description">
+                            </div>
+                            <div class="col-12">
+                                <label for="price"><b>Biding Price:</b></label>
+                                <input type="number" placeholder="Biding Price" class="form-control" value="" id="price" name="price">
+                            </div>
+                            <div class="col-12">
+                                <label for="start"><b>Starting Bid:</b></label>
+                                <input type="date" placeholder="Starting Bid" class="form-control" value="" id="start" name="start">
+                            </div>
+                            <div class="col-12">
+                                <label for="end"><b>Ending Bid:</b></label>
+                                <input type="date" placeholder="Ending Bid" class="form-control" value="" id="end" name="end">
+                            </div>
+                            <br>
+                            <div class="col-12 d-grid mx-auto">
+                                <button type="submit" class="btn btn-primary" name="btnCreate">Request Bid</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="description"><b>Product Description:</b></label>
-                    <input type="text" placeholder="Product Description" class="form-control" value="" id="description" name="description">
-                </div>
-                <div class="form-group">
-                    <label for="price"><b>Biding Price:</b></label>
-                    <input type="number" placeholder="Biding Price" class="form-control" value="" id="price" name="price">
-                </div>
-                <div class="form-group">
-                    <label for="start"><b>Starting Bid:</b></label>
-                    <input type="date" placeholder="Starting Bid" class="form-control" value="" id="start" name="start">
-                </div>
-                <div class="form-group">
-                    <label for="end"><b>Ending Bid:</b></label>
-                    <input type="date" placeholder="Ending Bid" class="form-control" value="" id="end" name="end">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary" name="btnCreate">Request Bid</button>
-                </div>
-            </form>
-        
-    </div>      
+            </div>
+        </div>        
+    </div> 
+</main>     
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -7,6 +7,7 @@ use Hash;
 use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CustomAuthController extends Controller
 {
@@ -92,5 +93,12 @@ class CustomAuthController extends Controller
         Session::flush();
         Auth::logout(); 
         return Redirect('login');
+    }
+
+    public function runningBid()
+    {
+        $mybid = DB::table('bid')->where('status','running')->get(); 
+        return view('runningBidIndex',['data'=>$mybid]);
+        
     }
 }

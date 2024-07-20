@@ -63,7 +63,13 @@ class UserDashboardController extends Controller
     public function runningBid()
     {
         $mybid = DB::table('bid')->where('status','running')->get(); 
-        return view('runningBidUser',['data'=>$mybid]);
+        if(Auth::user()->role == 'user'){
+            return view('runningBidUser',['data'=>$mybid]);
+        }
+        else{
+            return view('runningBidAdmin',['data'=>$mybid]);
+        }
+        
     }
     /**
      * Show the form for creating a new resource.

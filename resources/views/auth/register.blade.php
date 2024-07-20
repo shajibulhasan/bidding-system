@@ -12,21 +12,23 @@
 <body>
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <a class="navbar-brand" href="/">Bidding System</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <a class="navbar-brand" href="{{ route('index')}}">Bidding System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="{{ route('index')}}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="runningBidIndex">Running Bid</a>
-      </li>
+        <a class="nav-link" href="{{ route('runningBidIndex')}}">Running Bid</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="login">Login</a>
+        <a class="nav-link" href="{{ route('login')}}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('register')}}">Register</a>
       </li>    
     </ul>
   </div>  
@@ -35,7 +37,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <main class="signup-form">
-    <div class="cotainer">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
