@@ -24,13 +24,27 @@ class UserDashboardController extends Controller
 
     public function requestBid(Request $req)
     {
+        $req->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'starting_price' => 'required',
+            'starting_date' => 'required',
+            'ending_date' => 'required',
+        ],[
+            'name.required' => 'Name is required',
+            'description.required' => 'Description is required',
+            'starting_price.required' => 'Starting Price is required',
+            'starting_date.required' => 'Starting Date is required',
+            'ending_date.required' => 'Ending Date is required',
+        ]);
+        
         $user_id = Auth::user()->id;
         $bid_create = DB::table('bid')->insert([
             'name' => $req->name,
             'description' => $req->description,
-            'starting_price' => $req->price,
-            'starting_date' => $req->start,
-            'ending_date' => $req->end,
+            'starting_price' => $req->starting_price,
+            'starting_date' => $req->starting_date,
+            'ending_date' => $req->ending_date,
             'user_id' => $user_id,
         ]);
         if($bid_create){
@@ -41,10 +55,13 @@ class UserDashboardController extends Controller
         }
 
     }
+
     public function biddingPrice(Request $req, string $id)
     {
+        $user_id = Auth::user()->id;
         $bid_update = DB::table('bid')->where('id',$id)->update([
             'ending_price' => $req->price,
+            'bidder_id' => $user_id,
         ]);
         if($bid_update){
             return redirect()->route('runningBidUser');

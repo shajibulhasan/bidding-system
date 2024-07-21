@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('starting_date');
             $table->string('ending_date');
             $table->string('status')->default('Not Approve');
-            $table->string('user_id');
+            $table->foreignId('user_id');
+            $table->foreignId('bidder_id')->nullable();       
         });
     }
 

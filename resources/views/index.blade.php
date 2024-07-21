@@ -48,26 +48,26 @@
      <div class="row">
         <div class="col">
           <div class="card bg-primary text-light" style="width: 18rem;">
-            <div class="card-body">
+            <div class="card-body text-center">
               <h5 class="card-title">Total Bid</h5>
-              <p class="card-text">{{$totalBid}}</p>
+              <h4 class="card-text">{{$totalBid}}</h4>
             </div>
           </div>
         </div>
   
         <div class="col">
           <div class="card bg-success text-light" style="width: 18rem;">
-            <div class="card-body">
+            <div class="card-body text-center">
               <h5 class="card-title">Total Running Bid</h5>
-              <p class="card-text">{{$runningBid}}</p>
+              <h4 class="card-text">{{$runningBid}}</h4>
             </div>
           </div>
         </div>
         <div class="col">
           <div class="card bg-danger text-light" style="width: 18rem;">
-            <div class="card-body">
+            <div class="card-body text-center">
               <h5 class="card-title">Total Users</h5>
-              <p class="card-text">{{$totalUser}}</p>
+              <h4 class="card-text">{{$totalUser}}</h4>
             </div>
           </div>
         </div>
