@@ -14,10 +14,12 @@ use App\Http\Controllers\totalBidController;
 use App\Http\Controllers\RequestedBidController;
 use App\Http\Middleware\ValidateUser;
 use App\Http\Middleware\ValidateAdmin;
+use App\Http\Middleware\ValidateGuest;
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');
 // Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
 
 
@@ -39,11 +41,11 @@ Route::get('/runningBidAdmin',[UserDashboardController::class, 'runningBid'])->n
 
 
 //registration and login 
-Route::get('/',[CustomAuthController::class, 'guestDashboard'])->name('index');
-Route::get('/runningBidIndex',[CustomAuthController::class, 'runningBid'])->name('runningBidIndex');
-Route::get('dashboard', [CustomAuthController::class, 'dashboard']); 
-Route::get('login', [CustomAuthController::class, 'index'])->name('login');
-Route::post('/userDashboard', [CustomAuthController::class, 'customLogin'])->name('login.custom'); 
-Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
-Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.post'); 
+Route::get('/',[CustomAuthController::class, 'guestDashboard'])->name('index')->middleware(ValidateGuest::class);
+Route::get('/runningBidIndex',[CustomAuthController::class, 'runningBid'])->name('runningBidIndex')->middleware(ValidateGuest::class);
+Route::get('dashboard', [CustomAuthController::class, 'dashboard'])->middleware(ValidateGuest::class); 
+Route::get('login', [CustomAuthController::class, 'index'])->name('login')->middleware(ValidateGuest::class);
+Route::post('/userDashboard', [CustomAuthController::class, 'customLogin'])->name('login.custom')->middleware(ValidateGuest::class); 
+Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user')->middleware(ValidateGuest::class);
+Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.post')->middleware(ValidateGuest::class); 
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');

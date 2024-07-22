@@ -1,42 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Guest Dashboard</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
+@extends('layouts.app')
 
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <a class="navbar-brand" href="{{ route('index')}}">Bidding System</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('index')}}">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('runningBidIndex')}}">Running Bid</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('login')}}">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('register')}}">Register</a>
-      </li>    
-    </ul>
-  </div>  
-</nav>
-<br>
-
+@section('content')
 <div class="container">
-  <h1 class="text-center">BIDDING SYSTEM</h1>
+  <h1 class="text-center">Guest Dashboard</h1>
   <br>
   <div class="alert alert-warning alert-dismissible fade show" role="alert">
           <strong>Welcome user!</strong> enjoy your time.
@@ -73,6 +39,6 @@
         </div>
       </div>
     </div>
-</div>
-</body>
-</html>
+</div>   
+
+@endsection
