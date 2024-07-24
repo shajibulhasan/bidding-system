@@ -49,3 +49,5 @@ Route::post('/userDashboard', [CustomAuthController::class, 'customLogin'])->nam
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user')->middleware(ValidateGuest::class);
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.post')->middleware(ValidateGuest::class); 
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+Route::get('change/password/view', [CustomAuthController::class, 'chnagePasswordView'])->name('change.password.view');
+Route::post('change/password', [CustomAuthController::class, 'changePassword'])->name('change.password');

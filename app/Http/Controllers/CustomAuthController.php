@@ -105,7 +105,27 @@ class CustomAuthController extends Controller
     public function runningBid()
     {
         $mybid = DB::table('bid')->where('status','running')->get(); 
-        return view('runningBidIndex',['data'=>$mybid]);
-        
+        return view('runningBidIndex',['data'=>$mybid]);        
+    }
+    public function chnagePasswordView()
+    { 
+        return view('changePassword');        
+    }
+    public function changePassword(Request $req)
+    { 
+        $validator =  $req->validate([
+            'currentpassword' => 'required|',
+            'newpassword' => 'required',
+        ],[
+            'currentpassword.required' => 'Current password is required',
+            'newpassword.required' => 'New password is required',
+        ]);   
+    if(Hash::check($req->currentpassword, Auth::user()->password)){
+        Auth::user()->password=Hash::make($req->newpassword);
+        Auth::user()->save();
+        return redirect()->back()->with('success','Password Change Successfully');
+    }else{
+        return redirect()->back()->with('error','Current Password Not Matched');
+    }    
     }
 }
