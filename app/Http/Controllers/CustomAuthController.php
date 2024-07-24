@@ -7,6 +7,7 @@ use Hash;
 use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CustomAuthController extends Controller
 {
@@ -14,6 +15,13 @@ class CustomAuthController extends Controller
     public function index()
     {
         return view('auth.login');
+    }
+    public function guestDashboard()
+    {
+        $totalBid = DB::table('bid')->count('id'); 
+        $runningBid = DB::table('bid')->where('status','running')->count('id'); 
+        $totalUser = DB::table('users')->where('role','user')->count('id');
+        return view('index',['totalBid'=>$totalBid, 'runningBid'=>$runningBid, 'totalUser'=>$totalUser]);
     }
 
     public function customLogin(Request $request)
@@ -26,8 +34,15 @@ class CustomAuthController extends Controller
     
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('userDashboard')
+            if(Auth::user()->role == 'admin'){
+                return redirect()->intended('admin')
                         ->withSuccess('Signed in');
+            }
+            else{
+                return redirect()->intended('userDashboard')
+                ->withSuccess('Signed in'); 
+            }
+            
         }
         $validator['emailPassword'] = 'Email address or password is incorrect.';
         return redirect("login")->withErrors($validator);
@@ -85,5 +100,32 @@ class CustomAuthController extends Controller
         Session::flush();
         Auth::logout(); 
         return Redirect('login');
+    }
+
+    public function runningBid()
+    {
+        $mybid = DB::table('bid')->where('status','running')->get(); 
+        return view('runningBidIndex',['data'=>$mybid]);        
+    }
+    public function chnagePasswordView()
+    { 
+        return view('changePassword');        
+    }
+    public function changePassword(Request $req)
+    { 
+        $validator =  $req->validate([
+            'currentpassword' => 'required|',
+            'newpassword' => 'required',
+        ],[
+            'currentpassword.required' => 'Current password is required',
+            'newpassword.required' => 'New password is required',
+        ]);   
+    if(Hash::check($req->currentpassword, Auth::user()->password)){
+        Auth::user()->password=Hash::make($req->newpassword);
+        Auth::user()->save();
+        return redirect()->back()->with('success','Password Change Successfully');
+    }else{
+        return redirect()->back()->with('error','Current Password Not Matched');
+    }    
     }
 }
