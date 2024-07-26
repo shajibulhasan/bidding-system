@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <main class="signup-form">    
     <div class="container">
@@ -45,5 +44,4 @@
         </div>        
     </div> 
 </main>     
-
 @endsection

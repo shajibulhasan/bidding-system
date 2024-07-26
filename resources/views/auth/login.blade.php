@@ -8,6 +8,9 @@
                 <div class="card">
                     <h3 class="card-header text-center">Login</h3>
                     <div class="card-body">
+                        @if(session()->has('success'))
+                            <strong class="text-success">{{session()->get('success')}}</strong>
+                        @endif
                         <form method="POST" action="{{ route('login.custom') }}">
                             @csrf
                             <div class="form-group mb-3">

@@ -107,10 +107,6 @@ class CustomAuthController extends Controller
         $mybid = DB::table('bid')->where('status','running')->get(); 
         return view('runningBidIndex',['data'=>$mybid]);        
     }
-    public function chnagePasswordView()
-    { 
-        return view('changePassword');        
-    }
     public function changePassword(Request $req)
     { 
         $validator =  $req->validate([
@@ -123,7 +119,9 @@ class CustomAuthController extends Controller
     if(Hash::check($req->currentpassword, Auth::user()->password)){
         Auth::user()->password=Hash::make($req->newpassword);
         Auth::user()->save();
-        return redirect()->back()->with('success','Password Change Successfully');
+        Session::flush();
+        Auth::logout(); 
+        return redirect()->route('login')->with('success','Password Change Successfully');
     }else{
         return redirect()->back()->with('error','Current Password Not Matched');
     }    
