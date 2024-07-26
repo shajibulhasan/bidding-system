@@ -1,20 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IndexController;
 use App\Http\Controllers\UserDashboardController;
-use App\Http\Controllers\RunningBidIndexController;
-use App\Http\Controllers\RunningBidUserController;
-use App\Http\Controllers\RunningBidAdminController;
-use App\Http\Controllers\MyBidController;
-use App\Http\Controllers\CreateBidController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\totalBidController;
-use App\Http\Controllers\RequestedBidController;
 use App\Http\Middleware\ValidateUser;
 use App\Http\Middleware\ValidateAdmin;
 use App\Http\Middleware\ValidateGuest;
+use App\Http\Middleware\ValiateLogin;
 
 Auth::routes();
 
@@ -49,5 +42,5 @@ Route::post('/userDashboard', [CustomAuthController::class, 'customLogin'])->nam
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user')->middleware(ValidateGuest::class);
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.post')->middleware(ValidateGuest::class); 
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
-Route::get('change/password/view', [CustomAuthController::class, 'chnagePasswordView'])->name('change.password.view');
-Route::post('change/password', [CustomAuthController::class, 'changePassword'])->name('change.password');
+Route::get('change/password/view', [CustomAuthController::class, 'chnagePasswordView'])->name('change.password.view')->middleware(ValiateLogin::class); 
+Route::post('change/password', [CustomAuthController::class, 'changePassword'])->name('change.password')->middleware(ValiateLogin::class); 
