@@ -72,7 +72,7 @@ class CustomAuthController extends Controller
            
         $data = $request->all();
         $check = $this->create($data);
-        return redirect("login")->withSuccess('You have signed-in');
+        return redirect("login")->withSuccess('You have successfully registered');
     }
 
 

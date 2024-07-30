@@ -19,9 +19,12 @@ return new class extends Migration
             $table->string('ending_price')->default('Not start');
             $table->string('starting_date');
             $table->string('ending_date');
+            $table->string('image');
             $table->string('status')->default('Not Approve');
-            $table->foreignId('user_id');
-            $table->foreignId('bidder_id')->nullable();       
+            $table->unsignedBigInteger('user_id'); 
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('bidder_id')->nullable(); 
+            $table->foreign('bidder_id')->references('id')->on('users');       
         });
     }
 

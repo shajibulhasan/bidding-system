@@ -30,15 +30,19 @@ class UserDashboardController extends Controller
             'starting_price' => 'required',
             'starting_date' => 'required',
             'ending_date' => 'required',
+            'image' => 'required',
         ],[
             'name.required' => 'Name is required',
             'description.required' => 'Description is required',
             'starting_price.required' => 'Starting Price is required',
             'starting_date.required' => 'Starting Date is required',
             'ending_date.required' => 'Ending Date is required',
+            'image.required' => 'Image is required',
         ]);
         
         $user_id = Auth::user()->id;
+        $imageName = time().'.'.$req->image->extension();        
+        $req->image->move(public_path('images'), $imageName);
         $bid_create = DB::table('bid')->insert([
             'name' => $req->name,
             'description' => $req->description,
@@ -46,6 +50,7 @@ class UserDashboardController extends Controller
             'starting_date' => $req->starting_date,
             'ending_date' => $req->ending_date,
             'user_id' => $user_id,
+            'image' => $imageName,
         ]);
         if($bid_create){
             return redirect()->route('myBid');

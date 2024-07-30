@@ -12,7 +12,8 @@
                     <th>Starting Price</th>
                     <th>Ending Price</th>
                     <th>Starting Date</th>
-                    <th>Endding Date</th>                
+                    <th>Endding Date</th>
+                    <th>Product Image</th>                
                 </thead>
                 <tbody>
                     @foreach($data as $mybid=>$bid)
@@ -24,6 +25,7 @@
                         <td>{{$bid->ending_price}}</td>
                         <td>{{$bid->starting_date}}</td>
                         <td>{{$bid->ending_date}}</td>
+                        <td><img src="{{asset('images/'.$bid->image)}}" alt="" width="80px" height="80px"></td>
                         <td><a href="{{route('deleteBid',$bid->id)}}"><button class="btn btn-danger mr-2" onClick="return confirm('Are you sure?')">Delete</button></a></td>
                         <td><a href="{{route('approveBid',$bid->id)}}"><button class="btn btn-primary">Approved</button></a></td>
                     </tr>
