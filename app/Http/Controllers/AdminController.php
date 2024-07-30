@@ -16,7 +16,8 @@ class AdminController extends Controller
         $totalBid = DB::table('bid')->count('id'); 
         $runningBid = DB::table('bid')->where('status','running')->count('id'); 
         $requestBid = DB::table('bid')->where('status','Not Approve')->count('id'); 
-        return view('admin',['totalBid'=>$totalBid, 'runningBid'=>$runningBid, 'requestBid'=>$requestBid]);
+        $totalUser = DB::table('users')->where('role','user')->count('id');
+        return view('admin',['totalBid'=>$totalBid, 'runningBid'=>$runningBid, 'requestBid'=>$requestBid, 'totalUser'=>$totalUser]);
     }
     public function totalBid()
     {

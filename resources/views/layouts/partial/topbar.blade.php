@@ -4,7 +4,7 @@
   </div>
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand">
+  <nav class="main-header navbar navbar-expand navbar-dark bg-dark">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -66,6 +66,8 @@
                 </a>
 
                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                   <a class="dropdown-item" href="{{ route('profile') }}">My Profile</a>
+                   <a class="dropdown-item" href="{{ route('update') }}">Update Profile</a>
                    <a class="dropdown-item" href="{{ route('pass') }}">Change Password</a>
                    <a class="dropdown-item" href="{{ route('logout') }}"
                       onclick="event.preventDefault();

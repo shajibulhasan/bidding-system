@@ -38,6 +38,16 @@
             </div>
           </div>
         </div>
+
+        <div class="col">
+          <div class="card bg-info text-light" style="width: 18rem;">
+            <div class="card-body text-center">
+              <h5 class="card-title">Total Users</h5>
+              <h4 class="card-text">{{$totalUser}}</h4>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 </div>

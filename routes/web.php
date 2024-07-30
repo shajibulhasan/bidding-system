@@ -43,4 +43,7 @@ Route::get('registration', [CustomAuthController::class, 'registration'])->name(
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.post')->middleware(ValidateGuest::class); 
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 Route::post('change/password', [CustomAuthController::class, 'changePassword'])->name('change.password')->middleware(ValiateLogin::class); 
+Route::post('update/profile', [CustomAuthController::class, 'updateProfile'])->name('update.profile')->middleware(ValiateLogin::class); 
 Route::view('/pass', 'changePass')->name('pass')->middleware(ValiateLogin::class);
+Route::view('/update', 'updateProfile')->name('update')->middleware(ValiateLogin::class);
+Route::view('/profile', 'myProfile')->name('profile')->middleware(ValiateLogin::class);

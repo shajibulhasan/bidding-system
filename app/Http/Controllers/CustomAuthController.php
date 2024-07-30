@@ -126,4 +126,19 @@ class CustomAuthController extends Controller
         return redirect()->back()->with('error','Current Password Not Matched');
     }    
     }
+    public function updateProfile(Request $req)
+    {
+        $user_id = Auth::user()->id;
+        $user_update = DB::table('users')->where('id',$user_id)->update([
+            'name' => $req->name,
+            'phone_number' => $req->phone_number,
+            'email' => $req->email,
+        ]);
+        if($user_update){
+            return redirect()->route('profile')->with('success','Profile Update Successfully');
+        }
+        else{
+            echo "Error!";
+        }
+    }
 }

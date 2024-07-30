@@ -74,6 +74,35 @@
                       <p>My Bid</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon ion ion-person text-success"></i>
+                    <p>
+                      Profile
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{ route('profile')}}" class="nav-link active">
+                        <i class="far fa-circle nav-icon text-primary"></i>
+                        <p>My Profile</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route('update')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon text-primary"></i>
+                        <p>Update Profile</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route('pass')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon text-primary"></i>
+                        <p>Change Password</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
             @elseif(Auth::user()->role == 'admin')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin')}}">
@@ -98,7 +127,36 @@
                       <i class="nav-icon far fa-file text-warning"></i>
                       <p>Requested Bid</p>
                     </a>
-                </li> 
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon ion ion-person text-success"></i>
+                    <p>
+                      Profile
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{ route('profile')}}" class="nav-link active">
+                        <i class="far fa-circle nav-icon text-primary"></i>
+                        <p>My Profile</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route('update')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon text-primary"></i>
+                        <p>Update Profile</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route('pass')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon text-primary"></i>
+                        <p>Change Password</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
             @endguest
         </ul>
       </nav>
