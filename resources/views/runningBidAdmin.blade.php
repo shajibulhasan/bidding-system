@@ -12,7 +12,8 @@
                     <th>Starting Price</th>
                     <th>Bidding Price</th>
                     <th>Starting Date</th>
-                    <th>Bidding Date</th>                
+                    <th>Bidding Date</th> 
+                    <th>Product Image</th>               
                 </thead>
                 <tbody>
                     @foreach($data as $mybid=>$bid)
@@ -24,6 +25,7 @@
                         <td>{{$bid->ending_price}}</td>
                         <td>{{$bid->starting_date}}</td>
                         <td>{{$bid->ending_date}}</td>
+                        <td><img src="{{asset('images/'.$bid->image)}}" alt="" width="80px" height="80px"></td>
                     </tr>
                     @endforeach
                 </tbody>

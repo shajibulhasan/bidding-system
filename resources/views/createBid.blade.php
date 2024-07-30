@@ -45,6 +45,13 @@
                                 <span class="text-danger">{{$errors->first('ending_date')}}</span>
                                 @endif
                             </div>
+                            <div class="col-12">
+                                <label for="image"><b>Product Image</b></label>
+                                <input type="file" name="image" id="image" class="form-control">
+                                @if ($errors->has('image'))
+                                <span class="text-danger">{{$errors->first('image')}}</span>
+                                @endif
+                            </div>
                             <br>
                             <div class="col-12 d-grid mx-auto">
                                 <button type="submit" class="btn btn-primary" name="btnCreate">Request Bid</button>
