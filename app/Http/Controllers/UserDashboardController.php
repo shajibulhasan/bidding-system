@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Hash;
 use Session;
 use Illuminate\Support\Facades\Auth;
+use File;
 
 class UserDashboardController extends Controller
 {
@@ -98,6 +99,77 @@ class UserDashboardController extends Controller
         }
         
     }
+    public function bidDelete(string $id)
+    {
+        $imageName=DB::table('bid')->where('id',$id)->value('image');
+        
+        if(File::exists(public_path('images/'.$imageName))){
+            File::delete(public_path('images/'.$imageName));
+            $user = DB::table('bid')->where('id',$id)->delete();
+            return redirect()->back()->withSuccess('You have successfully delete bid');
+        }
+        else
+        {
+            echo '<h1>Error!</h1>';
+        }
+    }
+
+    public function updateBid(Request $req, string $id)
+    {
+              
+        $imageOldName=DB::table('bid')->where('id',$id)->value('image');
+        if ($req->image != "") {
+            $imageName = time().'.'.$req->image->extension(); 
+            $req->image->move(public_path('images'), $imageName);
+            $bid_create = DB::table('bid')->where('id',$id)->update([
+                'name' => $req->name,
+                'description' => $req->description,
+                'starting_price' => $req->starting_price,
+                'starting_date' => $req->starting_date,
+                'ending_date' => $req->ending_date,
+                'image' => $imageName,
+            ]);
+            if($bid_create){
+                if(File::exists(public_path('images/'.$imageOldName))){
+                    File::delete(public_path('images/'.$imageOldName));                
+                    return redirect()->route('myBid')->withSuccess('You have successfully update bid');
+                }
+                else{
+                    return redirect()->route('myBid')->withSuccess('You have successfully update bid');
+                }
+            }
+            else{
+                echo "Error!";
+            }
+        }
+        else {
+            $bid_create = DB::table('bid')->where('id',$id)->update([
+                'name' => $req->name,
+                'description' => $req->description,
+                'starting_price' => $req->starting_price,
+                'starting_date' => $req->starting_date,
+                'ending_date' => $req->ending_date,
+            ]);
+            if($bid_create){                           
+                return redirect()->route('myBid')->withSuccess('You have successfully update bid');
+            }
+            else{
+                echo "Error!";
+            }
+        }
+
+    }
+    public function bidUpdate(string $id)
+    {
+        $bid = DB::table('bid')->where('id',$id)->first();
+        return view('bidUpdate',['bid'=>$bid]);
+    }
+    public function bidView(string $id)
+    {
+        $bid = DB::table('bid')->where('id',$id)->first();
+        return view('updateView',['bid'=>$bid]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
