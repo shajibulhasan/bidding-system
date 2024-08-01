@@ -89,7 +89,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('change.password.view') }}">Change Password</a>
+                                    <a class="dropdown-item" href="">Change Password</a>
+                                    {{-- {{ route('change.password.view') }} --}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

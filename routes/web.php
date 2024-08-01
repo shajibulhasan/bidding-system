@@ -22,6 +22,10 @@ Route::get('/runningBidUser',[UserDashboardController::class, 'runningBid'])->na
 Route::get('/myBid',[UserDashboardController::class, 'myBid'])->name('myBid')->middleware(ValidateUser::class);
 Route::view('/create', 'createBid')->name('create')->middleware(ValidateUser::class);
 Route::post('/createBid',[UserDashboardController::class, 'requestBid'])->name('createbid.post')->middleware(ValidateUser::class);
+Route::post('/updateBid/{id}',[UserDashboardController::class, 'updateBid'])->name('updateBid')->middleware(ValidateUser::class);
+Route::get('/bidUpdate/{id}',[UserDashboardController::class, 'bidUpdate'])->name('bidUpdate')->middleware(ValidateUser::class);
+Route::get('/updateView/{id}',[UserDashboardController::class, 'bidView'])->name('updateView')->middleware(ValidateUser::class);
+Route::get('/bidDelete/{id}',[UserDashboardController::class, 'bidDelete'])->name('bidDelete')->middleware(ValidateUser::class);
 
 
 Route::get('/admin',[AdminController::class, 'index'])->name('admin')->middleware(ValidateAdmin::class);
@@ -47,3 +51,4 @@ Route::post('update/profile', [CustomAuthController::class, 'updateProfile'])->n
 Route::view('/pass', 'changePass')->name('pass')->middleware(ValiateLogin::class);
 Route::view('/update', 'updateProfile')->name('update')->middleware(ValiateLogin::class);
 Route::view('/profile', 'myProfile')->name('profile')->middleware(ValiateLogin::class);
+Route::view('/test', 'test')->name('test');

@@ -1,166 +1,101 @@
-  <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="{{ route('index')}}" class="brand-link text-decoration-none text-monospace">
-      <img src="dist/img/bid-icon.png" alt="Bid Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      @guest
-          <span class="brand-text font-weight-light">Guest Dashboard</span>
-      @elseif(Auth::user()->role == 'user')
-          <span class="brand-text font-weight-light">User Dashboard</span>
-      @elseif(Auth::user()->role == 'admin')
-          <span class="brand-text font-weight-light">Admin Dashboard</span>
-      @endguest 
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          {{-- <li class="nav-item menu-open"> --}}
-            @guest
-                <li class="nav-item menu-open">
-                    <a class="nav-link" href="{{ route('index')}}">
-                      <i class="nav-icon fas fa-th-large text-info"></i>
-                      <p>Home</p>
-                    </a>
-                    {{--  --}}
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('runningBidIndex')}}">
-                      <i class="nav-icon far fa-circle text-danger"></i>
-                      <p>Running Bid</p>
-                    </a>
-                    {{--  --}}
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login')}}">
-                      <i class="nav-icon fas fa-edit text-primary"></i>
-                      <p>Login</p>
-                    </a>
-                    {{--  --}}
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register')}}">
-                      <i class="nav-icon far fa-plus-square text-success"></i>
-                      <p>Register</p>
-                    </a>
-                    {{--  --}}
-                </li>
-            @elseif(Auth::user()->role == 'user')
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('userDashboard')}}">
-                      <i class="nav-icon fas fa-th-large text-info"></i>
-                      <p>Home</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('create')}}">
-                      <i class="nav-icon far fa-edit text-primary"></i>
-                      <p>Create Bid</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('runningBidUser')}}">
-                      <i class="nav-icon far fa-circle text-danger"></i>
-                      <p>Running Bid</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('myBid')}}">
-                      <i class="nav-icon fas fa-table text-warning"></i>
-                      <p>My Bid</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon ion ion-person text-success"></i>
-                    <p>
-                      Profile
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="{{ route('profile')}}" class="nav-link active">
-                        <i class="far fa-circle nav-icon text-primary"></i>
-                        <p>My Profile</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="{{ route('update')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon text-primary"></i>
-                        <p>Update Profile</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="{{ route('pass')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon text-primary"></i>
-                        <p>Change Password</p>
-                      </a>
-                    </li>
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" data-sidebarbg="skin5">
+          <!-- Sidebar scroll-->
+          <div class="scroll-sidebar">
+              <!-- Sidebar navigation-->
+              <nav class="sidebar-nav">
+                  <ul id="sidebarnav" class="pt-4">
+                    @guest
+                      <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                              href="{{ route('index')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                                  class="hide-menu">Home</span></a></li>
+                                  {{-- {{ route('index')}} --}}
+                      <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                              href="{{ route('runningBidIndex')}}" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span
+                                  class="hide-menu">Running Bid</span></a></li>
+                                  {{-- {{ route('runningBidIndex')}} --}}
+                      <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                              href="{{ route('login')}}" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span
+                                  class="hide-menu">Login</span></a></li>
+                                  {{-- {{ route('login')}} --}}
+                      <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                              href="{{ route('register')}}" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span
+                                  class="hide-menu">Register</span></a></li>
+                                  {{-- {{ route('register')}} --}}
+                      @elseif(Auth::user()->role == 'user')
+                      <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                              href="{{ route('userDashboard')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                                  class="hide-menu">Home</span></a></li>
+                                  {{-- {{ route('userDashboard')}} --}}
+                      <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                              href="{{ route('create')}}" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
+                                  class="hide-menu">Create Bid</span></a></li>
+                                  {{-- {{ route('create')}} --}}
+                      <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                              href="{{ route('runningBidUser')}}" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
+                                  class="hide-menu">Running Bid</span></a></li>
+                                  {{-- {{ route('runningBidUser')}} --}}
+                      <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                              href="{{ route('myBid')}}" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
+                                  class="hide-menu">My Bid</span></a></li>
+                                  {{-- {{ route('myBid')}} --}}
+                      <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
+                              href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span
+                                  class="hide-menu">Profile </span></a>
+                          <ul aria-expanded="false" class="collapse  first-level">
+                              <li class="sidebar-item"><a href="{{ route('profile')}}" class="sidebar-link"><i
+                                          class="mdi mdi-note-outline"></i><span class="hide-menu"> My Profile
+                                      </span></a></li>
+                                      {{-- {{ route('profile')}} --}}
+                              <li class="sidebar-item"><a href="{{ route('update')}}" class="sidebar-link"><i
+                                          class="mdi mdi-note-plus"></i><span class="hide-menu"> Update Profile
+                                      </span></a></li>
+                                      {{-- {{ route('update')}} --}}
+                              <li class="sidebar-item"><a href="{{ route('pass')}}" class="sidebar-link"><i
+                                          class="mdi mdi-note-plus"></i><span class="hide-menu"> Change Password
+                                      </span></a></li>
+                                      {{-- {{ route('pass')}} --}}
+                          </ul>
+                      </li>
+                      @elseif(Auth::user()->role == 'admin')
+                      <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                              href="{{ route('admin')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                                  class="hide-menu">Home</span></a></li>
+                                  {{-- {{ route('admin')}} --}}
+                      <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                              href="{{ route('runningBidAdmin')}}" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
+                                  class="hide-menu">Running Bid</span></a></li>
+                                  {{-- {{ route('runningBidAdmin')}} --}}
+                      <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                              href="{{ route('requestedBid')}}" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
+                                  class="hide-menu">Requested Bid</span></a></li>
+                                  {{-- {{ route('requestedBid')}} --}}
+                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
+                              href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span
+                                  class="hide-menu">Profile </span></a>
+                          <ul aria-expanded="false" class="collapse  first-level">
+                              <li class="sidebar-item"><a href="{{ route('profile')}}" class="sidebar-link"><i
+                                          class="mdi mdi-note-outline"></i><span class="hide-menu"> My Profile
+                                      </span></a></li>
+                                      {{-- {{ route('profile')}} --}}
+                              <li class="sidebar-item"><a href="{{ route('update')}}" class="sidebar-link"><i
+                                          class="mdi mdi-note-plus"></i><span class="hide-menu"> Update Profile
+                                      </span></a></li>
+                                      {{-- {{ route('update')}} --}}
+                              <li class="sidebar-item"><a href="{{ route('pass')}}" class="sidebar-link"><i
+                                          class="mdi mdi-note-plus"></i><span class="hide-menu"> Change Password
+                                      </span></a></li>
+                                      {{-- {{ route('pass')}} --}}
+                          </ul>
+                      </li>
+                      @endguest
                   </ul>
-                </li>
-            @elseif(Auth::user()->role == 'admin')
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin')}}">
-                      <i class="nav-icon fas fa-th-large text-info"></i>
-                      <p>Home</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('runningBidAdmin')}}">
-                      <i class="nav-icon far fa-circle text-danger"></i>
-                      <p>Running Bid</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('totalBid')}}">
-                      <i class="nav-icon fas fa-table text-success"></i>
-                      <p>Total Bid</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('requestedBid')}}">
-                      <i class="nav-icon far fa-file text-warning"></i>
-                      <p>Requested Bid</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon ion ion-person text-success"></i>
-                    <p>
-                      Profile
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="{{ route('profile')}}" class="nav-link active">
-                        <i class="far fa-circle nav-icon text-primary"></i>
-                        <p>My Profile</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="{{ route('update')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon text-primary"></i>
-                        <p>Update Profile</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="{{ route('pass')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon text-primary"></i>
-                        <p>Change Password</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-            @endguest
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+              </nav>
+              <!-- End Sidebar navigation -->
+          </div>
+          <!-- End Sidebar scroll-->
+      </aside>
+      <!-- ============================================================== -->
+      <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+      <!-- ============================================================== -->

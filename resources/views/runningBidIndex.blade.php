@@ -2,12 +2,10 @@
 
 @section('content')
 <div class="container">
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Login if you want to participate in the bid!</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Login if you want to participate in the bid!!</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
   <div class="card">
     <h4 class="card-header text-center">Running Bid</h4>
     <table class="table table-striped">
@@ -36,6 +34,7 @@
         @endforeach
       </tbody>
     </table>
+  </div>
   </div>
 </div>
 
