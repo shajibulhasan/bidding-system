@@ -1,99 +1,138 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Matrix lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Matrix admin lite design, Matrix admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Bidding System</title>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="dist/image/bid-icon.png">
-    <!-- Custom CSS -->
-    <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="dist/css/style.min.css" rel="stylesheet">
-    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> --}}
-  {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script> --}}
-  {{-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> --}}
-  {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> --}}
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/png" sizes="16x16" href="dist/image/bid-icon.png">
+  <title>Bidding System</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-
 <body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
-    {{-- <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
-        </div>
-    </div> --}}
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
-        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-        <!-- ============================================================== -->
-        @include('layouts.partial.topbar')
-        @include('layouts.partial.sidebar')
-        <!-- ============================================================== -->
-        <br>
-        @yield('content')
-       
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ route('index')}}">
+        <!-- Logo icon -->
+        <b class="logo-icon ps-2">
+            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+            <!-- Dark Logo icon -->
+            <img src="dist/image/bid-icon.png" width="45px" alt="Logo" class="light-logo" />
+        <!--End Logo icon -->
+        <!-- Logo text -->
+        @guest
+            <span class="brand-text font-weight-light">Guest Dashboard</span>
+        @elseif(Auth::user()->role == 'user')
+            <span class="brand-text font-weight-light">User Dashboard</span>
+        @elseif(Auth::user()->role == 'admin')
+            <span class="brand-text font-weight-light">Admin Dashboard</span>
+        @endguest 
+        </b>                        
+        <!--End Logo text -->
+    </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav float-start me-auto">
+          <li class="nav-item d-none d-lg-block"><a
+                  class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)"
+                  data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a></li>
+          <!-- ============================================================== -->
+          <!-- create new -->
+          <!-- ============================================================== -->
+          @guest
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('index')}}">Home</a>
+                  {{-- {{ route('index')}} --}}
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('runningBidIndex')}}">Running Bid</a>
+                  {{-- {{ route('runningBidIndex')}} --}}
+              </li>
+          @elseif(Auth::user()->role == 'user')
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('userDashboard')}}">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('create')}}">Create Bid</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('runningBidUser')}}">Running Bid</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('myBid')}}">My Bid</a>
+              </li>
+          @elseif(Auth::user()->role == 'admin')
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('admin')}}">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('runningBidAdmin')}}">Running Bid</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('totalBid')}}">Total Bid</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('requestedBid')}}">Requested Bid</a>
+              </li> 
+          @endguest
+
+      </ul>
+      <!-- ============================================================== -->
+      <!-- Right side toggle and nav items -->
+      <!-- ============================================================== -->
+      <ul class="navbar-nav float-end">
+          <!-- ============================================================== -->
+          @guest
+          <li class="nav-item">
+              <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+              {{-- {{ route('login') }} --}}
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+              {{-- {{ route('register') }} --}}
+          </li>                       
+          <!-- ============================================================== -->
+          <!-- User profile and search -->
+          <!-- ============================================================== -->
+          @else
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="../../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end user-dd animated mt-2" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('profile')}}"><i class="ti-user me-1 ms-1"></i>
+                      {{-- {{ route('profile') }} --}}
+                      My Profile</a>
+                  <a class="dropdown-item" href="{{ route('update')}}"><i class="ti-wallet me-1 ms-1"></i>
+                      {{-- {{ route('update') }} --}}
+                  Update Profile</a>
+                  <a class="dropdown-item" href="{{ route('pass')}}"><i class=" fas fa-address-card"></i> 
+                      {{-- {{ route('pass') }} --}}
+                  Change Password</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{{ route('signout') }}"><i
+                          class="fa fa-power-off me-1 ms-1"></i> 
+                          {{-- {{ route('signout') }} --}}
+                          Logout</a>
+                  <div class="dropdown-divider"></div>
+              </ul>
+          </li>
+          @endguest
+          <!-- ============================================================== -->
+          <!-- User profile and search -->
+          <!-- ============================================================== -->
+      </ul>
+      </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="assets/extra-libs/sparkline/sparkline.js"></script>
-    <!--Wave Effects -->
-    <script src="dist/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <!-- <script src="../../dist/js/pages/dashboards/dashboard1.js"></script> -->
-    <!-- Charts js Files -->
-    <script src="assets/libs/flot/excanvas.js"></script>
-    <script src="assets/libs/flot/jquery.flot.js"></script>
-    <script src="assets/libs/flot/jquery.flot.pie.js"></script>
-    <script src="assets/libs/flot/jquery.flot.time.js"></script>
-    <script src="assets/libs/flot/jquery.flot.stack.js"></script>
-    <script src="assets/libs/flot/jquery.flot.crosshair.js"></script>
-    <script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-    <script src="dist/js/pages/chart/chart-page-init.js"></script>
-        <!-- this page js -->
-    <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
-    <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
-    <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
-    <script>
-        /****************************************
-         *       Basic Table                   *
-         ****************************************/
-        $('#zero_config').DataTable();
-    </script>
+  </nav>
 
+  <br>
+  @yield('content')
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
-
 </html>
