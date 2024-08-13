@@ -4,6 +4,37 @@
 <div class="container">
         <div class="card">
             <h4 class="card-header text-center">Running Bid</h4>
+            <div class="card-body">
+                <div class="row">
+                    @foreach($data as $mybid=>$bid)
+                    <div class="card m-2" style="width: 18rem;">                    
+                        <div class="card-body">
+                        <img src="{{asset('images/'.$bid->image)}}" alt="" width="230px" height="180px">
+                        <h5 class="card-title mt-2">Bid Information</h5>
+                        <p class="card-text">
+                            Product Name: {{$bid->name}} <br>
+                            Product Description: {{$bid->description}} <br>
+                            Starting Price: {{$bid->starting_price}} <br>
+                            Ending Price: {{$bid->ending_price}} <br>
+                            Starting Date: {{$bid->starting_date}} <br>
+                            Ending Date: {{$bid->ending_date}} <br>
+                        </p>
+                        <form action="{{ route('biddingprice.post', $bid->id) }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                                <div class="form-group">
+                                    <input type="text" placeholder="Biding Price" class="form-control" value="" id="" name="price">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary" name="btnCreate">Participate</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            {{-- <h4 class="card-header text-center">Running Bid</h4>
             <table class="table table-striped">
                 <thead>
                     <th>Bid ID</th>
@@ -41,7 +72,7 @@
                         </tr>
                         @endforeach
                 </tbody>
-            </table>
+            </table> --}}
         </div>
     </div>      
 
