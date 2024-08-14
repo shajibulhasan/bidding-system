@@ -12,8 +12,8 @@ use App\Http\Controllers\HelpSupportController;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');
 // Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
 
 
@@ -52,7 +52,9 @@ Route::post('update/profile', [CustomAuthController::class, 'updateProfile'])->n
 Route::view('/pass', 'changePass')->name('pass')->middleware(ValiateLogin::class);
 Route::view('/update', 'updateProfile')->name('update')->middleware(ValiateLogin::class);
 Route::view('/profile', 'myProfile')->name('profile')->middleware(ValiateLogin::class);
-Route::view('/test', 'test')->name('test');
+// Route::view('/test', 'test')->name('test');
+
+
 
 Route::get('contact', [HelpSupportController::class, 'contact'])->name('contact');
 Route::get('faqs', [HelpSupportController::class, 'faqs'])->name('faqs');

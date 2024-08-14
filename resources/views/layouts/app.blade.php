@@ -50,15 +50,6 @@
                   <a class="nav-link" href="{{ route('runningBidIndex')}}">Running Bid</a>
                   {{-- {{ route('runningBidIndex')}} --}}
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#helpSupportMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Help & Support
-                </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ route('contact') }}">Contact</a></li>
-            <li><a class="dropdown-item" href="{{ route('faqs') }}">FaQs</a></li>
-          </ul>
-        </li>
           @elseif(Auth::user()->role == 'user')
               <li class="nav-item">
                   <a class="nav-link" href="{{ route('userDashboard')}}">Home</a>
@@ -94,6 +85,15 @@
       <ul class="navbar-nav float-end">
           <!-- ============================================================== -->
           @guest
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#helpSupportMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Help & Support
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('contact') }}">Contact</a></li>
+                <li><a class="dropdown-item" href="{{ route('faqs') }}">FaQs</a></li>
+            </ul>
+          </li>
           <li class="nav-item">
               <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
               {{-- {{ route('login') }} --}}
@@ -102,10 +102,18 @@
               <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
               {{-- {{ route('register') }} --}}
           </li>                       
-          <!-- ============================================================== -->
-          <!-- User profile and search -->
-          <!-- ============================================================== -->
           @else
+            @if(Auth::user()->role == 'user')                     
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#helpSupportMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Help & Support
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('contact') }}">Contact</a></li>
+                        <li><a class="dropdown-item" href="{{ route('faqs') }}">FaQs</a></li>
+                    </ul>
+                </li>
+            @endif
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="../../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
