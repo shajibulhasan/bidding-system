@@ -50,6 +50,15 @@
                   <a class="nav-link" href="{{ route('runningBidIndex')}}">Running Bid</a>
                   {{-- {{ route('runningBidIndex')}} --}}
               </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#helpSupportMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Help & Support
+                </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ route('contact') }}">Contact</a></li>
+            <li><a class="dropdown-item" href="{{ route('faqs') }}">FaQs</a></li>
+          </ul>
+        </li>
           @elseif(Auth::user()->role == 'user')
               <li class="nav-item">
                   <a class="nav-link" href="{{ route('userDashboard')}}">Home</a>

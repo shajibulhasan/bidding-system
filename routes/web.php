@@ -8,6 +8,7 @@ use App\Http\Middleware\ValidateUser;
 use App\Http\Middleware\ValidateAdmin;
 use App\Http\Middleware\ValidateGuest;
 use App\Http\Middleware\ValiateLogin;
+use App\Http\Controllers\HelpSupportController;
 
 Auth::routes();
 
@@ -52,3 +53,6 @@ Route::view('/pass', 'changePass')->name('pass')->middleware(ValiateLogin::class
 Route::view('/update', 'updateProfile')->name('update')->middleware(ValiateLogin::class);
 Route::view('/profile', 'myProfile')->name('profile')->middleware(ValiateLogin::class);
 Route::view('/test', 'test')->name('test');
+
+Route::get('contact', [HelpSupportController::class, 'contact'])->name('contact');
+Route::get('faqs', [HelpSupportController::class, 'faqs'])->name('faqs');
