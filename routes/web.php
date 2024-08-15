@@ -27,6 +27,8 @@ Route::post('/updateBid/{id}',[UserDashboardController::class, 'updateBid'])->na
 Route::get('/bidUpdate/{id}',[UserDashboardController::class, 'bidUpdate'])->name('bidUpdate')->middleware(ValidateUser::class);
 Route::get('/updateView/{id}',[UserDashboardController::class, 'bidView'])->name('updateView')->middleware(ValidateUser::class);
 Route::get('/bidDelete/{id}',[UserDashboardController::class, 'bidDelete'])->name('bidDelete')->middleware(ValidateUser::class);
+Route::get('/wonBid',[UserDashboardController::class, 'wonBid'])->name('wonBid')->middleware(ValidateUser::class);
+Route::get('/bidSold',[UserDashboardController::class, 'bidSold'])->name('bidSold')->middleware(ValidateUser::class);
 
 
 Route::get('/admin',[AdminController::class, 'index'])->name('admin')->middleware(ValidateAdmin::class);

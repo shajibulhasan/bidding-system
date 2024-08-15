@@ -8,10 +8,16 @@
                     <h3 class="card-header text-center">Change Password</h3>
                     <div class="card-body">
                         @if(session()->has('success'))
-                            <strong class="text-success">{{session()->get('success')}}</strong>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong class="text-dark">{{session()->get('success')}}!</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
                         @endif
                         @if(session()->has('error'))
-                            <strong class="text-danger">{{session()->get('error')}}</strong>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong class="text-dark">{{session()->get('error')}}!</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
                         @endif
                         <form action="{{ route('change.password') }}" method="post" enctype="multipart/form-data">
                         @csrf
