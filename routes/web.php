@@ -12,8 +12,8 @@ use App\Http\Controllers\HelpSupportController;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');
 // Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
 
 
@@ -27,6 +27,8 @@ Route::post('/updateBid/{id}',[UserDashboardController::class, 'updateBid'])->na
 Route::get('/bidUpdate/{id}',[UserDashboardController::class, 'bidUpdate'])->name('bidUpdate')->middleware(ValidateUser::class);
 Route::get('/updateView/{id}',[UserDashboardController::class, 'bidView'])->name('updateView')->middleware(ValidateUser::class);
 Route::get('/bidDelete/{id}',[UserDashboardController::class, 'bidDelete'])->name('bidDelete')->middleware(ValidateUser::class);
+Route::get('/wonBid',[UserDashboardController::class, 'wonBid'])->name('wonBid')->middleware(ValidateUser::class);
+Route::get('/bidSold',[UserDashboardController::class, 'bidSold'])->name('bidSold')->middleware(ValidateUser::class);
 
 
 Route::get('/admin',[AdminController::class, 'index'])->name('admin')->middleware(ValidateAdmin::class);
@@ -52,7 +54,9 @@ Route::post('update/profile', [CustomAuthController::class, 'updateProfile'])->n
 Route::view('/pass', 'changePass')->name('pass')->middleware(ValiateLogin::class);
 Route::view('/update', 'updateProfile')->name('update')->middleware(ValiateLogin::class);
 Route::view('/profile', 'myProfile')->name('profile')->middleware(ValiateLogin::class);
-Route::view('/test', 'test')->name('test');
+// Route::view('/test', 'test')->name('test');
+
+
 
 Route::get('contact', [HelpSupportController::class, 'contact'])->name('contact');
 Route::get('faqs', [HelpSupportController::class, 'faqs'])->name('faqs');

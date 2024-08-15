@@ -13,13 +13,8 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container-fluid">
       <a class="navbar-brand" href="{{ route('index')}}">
-        <!-- Logo icon -->
         <b class="logo-icon ps-2">
-            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-            <!-- Dark Logo icon -->
             <img src="dist/image/bid-icon.png" width="45px" alt="Logo" class="light-logo" />
-        <!--End Logo icon -->
-        <!-- Logo text -->
         @guest
             <span class="brand-text font-weight-light">Guest Dashboard</span>
         @elseif(Auth::user()->role == 'user')
@@ -28,7 +23,6 @@
             <span class="brand-text font-weight-light">Admin Dashboard</span>
         @endguest 
         </b>                        
-        <!--End Logo text -->
     </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -50,15 +44,6 @@
                   <a class="nav-link" href="{{ route('runningBidIndex')}}">Running Bid</a>
                   {{-- {{ route('runningBidIndex')}} --}}
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#helpSupportMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Help & Support
-                </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ route('contact') }}">Contact</a></li>
-            <li><a class="dropdown-item" href="{{ route('faqs') }}">FaQs</a></li>
-          </ul>
-        </li>
           @elseif(Auth::user()->role == 'user')
               <li class="nav-item">
                   <a class="nav-link" href="{{ route('userDashboard')}}">Home</a>
@@ -71,6 +56,12 @@
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="{{ route('myBid')}}">My Bid</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('wonBid')}}">My Won Bid</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('bidSold')}}">My Sold Bid</a>
               </li>
           @elseif(Auth::user()->role == 'admin')
               <li class="nav-item">
@@ -94,6 +85,15 @@
       <ul class="navbar-nav float-end">
           <!-- ============================================================== -->
           @guest
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#helpSupportMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Help & Support
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('contact') }}">Contact</a></li>
+                <li><a class="dropdown-item" href="{{ route('faqs') }}">FaQs</a></li>
+            </ul>
+          </li>
           <li class="nav-item">
               <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
               {{-- {{ route('login') }} --}}
@@ -102,36 +102,41 @@
               <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
               {{-- {{ route('register') }} --}}
           </li>                       
-          <!-- ============================================================== -->
-          <!-- User profile and search -->
-          <!-- ============================================================== -->
           @else
-          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="../../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end user-dd animated mt-2" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ route('profile')}}"><i class="ti-user me-1 ms-1"></i>
-                      {{-- {{ route('profile') }} --}}
-                      My Profile</a>
-                  <a class="dropdown-item" href="{{ route('update')}}"><i class="ti-wallet me-1 ms-1"></i>
-                      {{-- {{ route('update') }} --}}
-                  Update Profile</a>
-                  <a class="dropdown-item" href="{{ route('pass')}}"><i class=" fas fa-address-card"></i> 
-                      {{-- {{ route('pass') }} --}}
-                  Change Password</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ route('signout') }}"><i
-                          class="fa fa-power-off me-1 ms-1"></i> 
-                          {{-- {{ route('signout') }} --}}
-                          Logout</a>
-                  <div class="dropdown-divider"></div>
-              </ul>
-          </li>
+            @if(Auth::user()->role == 'user')                     
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#helpSupportMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Help & Support
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('contact') }}">Contact</a></li>
+                        <li><a class="dropdown-item" href="{{ route('faqs') }}">FaQs</a></li>
+                    </ul>
+                </li>
+            @endif
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle mr-3" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <b class="text-light"> {{ Auth::user()->name }}</b>
+                    {{-- <img src="../../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"> --}}
+                 </a>
+ 
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('profile') }}">My Profile</a>
+                    <a class="dropdown-item" href="{{ route('update') }}">Update Profile</a>
+                    <a class="dropdown-item" href="{{ route('pass') }}">Change Password</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                     </a>
+ 
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </li>
           @endguest
-          <!-- ============================================================== -->
-          <!-- User profile and search -->
-          <!-- ============================================================== -->
       </ul>
       </div>
     </div>

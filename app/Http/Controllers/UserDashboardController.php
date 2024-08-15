@@ -55,10 +55,10 @@ class UserDashboardController extends Controller
             'image' => $imageName,
         ]);
         if($bid_create){
-            return redirect()->route('myBid');
+            return redirect()->back()->with('success','You have successfully Bid Request');
         }
         else{
-            echo "Error!";
+            return redirect()->back()->with('error','Your bid Cannot Create');
         }
 
     }
@@ -66,16 +66,42 @@ class UserDashboardController extends Controller
     public function biddingPrice(Request $req, string $id)
     {
         $user_id = Auth::user()->id;
-        $bid_update = DB::table('bid')->where('id',$id)->update([
-            'ending_price' => $req->price,
-            'bidder_id' => $user_id,
-        ]);
-        if($bid_update){
-            return redirect()->route('runningBidUser');
+        $bid = DB::table('bid')->where('id',$id)->first();
+        if($bid->ending_price=='No Bid'){
+            if($bid->starting_price<$req->price){
+                $bid_update = DB::table('bid')->where('id',$id)->update([
+                    'ending_price' => $req->price,
+                    'bidder_id' => $user_id,
+                ]);
+                if($bid_update){
+                    return redirect()->back()->with('success','You have successfully Participate bid');
+                }
+                else{
+                    echo "Error!";
+                }
+            }else{
+                return redirect()->back()->with('error','Your bid is lower than the current price');
+            }
         }
         else{
-            echo "Error!";
+            if($bid->ending_price<$req->price){
+                $bid_update = DB::table('bid')->where('id',$id)->update([
+                    'ending_price' => $req->price,
+                    'bidder_id' => $user_id,
+                ]);
+                if($bid_update){
+                    return redirect()->back()->with('success','You have successfully Participate bid');
+                }
+                else{
+                    echo "Error!";
+                }
+            }else{
+                return redirect()->back()->with('error','Your bid is lower than the current price');
+            }
         }
+
+        
+        
 
     }
 
@@ -90,6 +116,15 @@ class UserDashboardController extends Controller
 
     public function runningBid()
     {
+        $bid = DB::table('bid')->where('ending_date','<',now())->get(); 
+
+        if($bid){
+            foreach ($bid as $key => $value) {
+                DB::table('bid')->where('id',$value->id)->update([
+                    'status' => 'sold',
+                ]);
+            }
+        }
         $mybid = DB::table('bid')->where('status','running')->get(); 
         if(Auth::user()->role == 'user'){
             return view('runningBidUser',['data'=>$mybid]);
@@ -99,6 +134,31 @@ class UserDashboardController extends Controller
         }
         
     }
+
+    public function wonBid()
+    {
+        $user_id = Auth::user()->id;
+        $mybid = DB::table('bid')->where('status','sold')->where('bidder_id',$user_id)->get(); 
+        if($mybid){
+            return view('wonBid',['data'=>$mybid]);
+        }
+        else{
+            echo '<h1>Error!</h1>';
+        }
+    }
+    public function bidSold()
+    {
+        $user_id = Auth::user()->id;
+        $mybid = DB::table('bid')->join('users', 'users.id', '=', 'bid.bidder_id')->select('bid.*', 'users.name as buyer_name')->where('status','sold')->where('user_id',$user_id)->get(); 
+        if($mybid){
+            return view('bidSold',['data'=>$mybid]);
+        }
+        else{
+            echo '<h1>Error!</h1>';
+        }
+        
+    }
+
     public function bidDelete(string $id)
     {
         $imageName=DB::table('bid')->where('id',$id)->value('image');
@@ -106,7 +166,7 @@ class UserDashboardController extends Controller
         if(File::exists(public_path('images/'.$imageName))){
             File::delete(public_path('images/'.$imageName));
             $user = DB::table('bid')->where('id',$id)->delete();
-            return redirect()->back()->withSuccess('You have successfully delete bid');
+            return redirect()->back()->with('success','You have successfully delete bid');
         }
         else
         {
@@ -132,10 +192,10 @@ class UserDashboardController extends Controller
             if($bid_create){
                 if(File::exists(public_path('images/'.$imageOldName))){
                     File::delete(public_path('images/'.$imageOldName));                
-                    return redirect()->route('myBid')->withSuccess('You have successfully update bid');
+                    return redirect()->back()->with('success','You have successfully update bid');
                 }
                 else{
-                    return redirect()->route('myBid')->withSuccess('You have successfully update bid');
+                    return redirect()->back()->with('success','You have successfully update bid');
                 }
             }
             else{
@@ -151,7 +211,7 @@ class UserDashboardController extends Controller
                 'ending_date' => $req->ending_date,
             ]);
             if($bid_create){                           
-                return redirect()->route('myBid')->withSuccess('You have successfully update bid');
+                return redirect()->back()->with('success','You have successfully update bid');
             }
             else{
                 echo "Error!";

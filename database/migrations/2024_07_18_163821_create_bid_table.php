@@ -17,10 +17,11 @@ return new class extends Migration
             $table->string('description');
             $table->string('starting_price');
             $table->string('ending_price')->default('Not start');
-            $table->string('starting_date');
-            $table->string('ending_date');
+            $table->date('starting_date');
+            $table->date('ending_date');
             $table->string('image');
             $table->string('status')->default('Not Approve');
+            $table->string('delivery_status')->default('Pending');
             $table->unsignedBigInteger('user_id'); 
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('bidder_id')->nullable(); 
