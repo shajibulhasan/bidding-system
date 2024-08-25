@@ -6,8 +6,8 @@
       <strong>Login if you want to participate in the bid!!</strong>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-  <div class="card">
-    <h4 class="card-header text-center">Running Bid</h4>
+  <div class="card" style="background-color: rgba(0,0,0, 0.1);">
+    <h4 class="card-header text-light text-center">Running Bid</h4>
     <div class="card-body">
       <div class="row">
           @foreach($data as $mybid=>$bid)

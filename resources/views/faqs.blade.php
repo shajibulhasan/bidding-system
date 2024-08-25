@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container">
-    <div class="card">
+    
+    <div class="card" style="background-color: rgba(255, 255, 255, 0.4);">
         <h1 class="text-center card-header">FAQs</h1>
         <div class="card-body">
             <p class="text-center">Welcome to our FAQ page. <br>Here you’ll find answers to common questions about our bidding system.</p>

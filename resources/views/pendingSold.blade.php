@@ -3,11 +3,17 @@
 @section('content')
 <div class="container">
   <div class="card" style="background-color: rgba(0,0,0, 0.1);">
-    <h4 class="card-header text-light text-center">My Sold Bid</h4>
+    <h4 class="card-header text-light text-center">Pending Product</h4>
     <div class="card-body">
       <div class="row">
+        @if(session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong class="text-dark">{{session()->get('success')}}!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
           @foreach($data as $mybid=>$bid)
-          <div class="card m-2" style="width: 18rem;">                    
+          <div class="card m-2" style="width: 20rem;">                    
               <div class="card-body">
               <img src="{{asset('images/'.$bid->image)}}" alt="" width="230px" height="180px">
               <h5 class="card-title mt-2">Bid Information</h5>
@@ -19,7 +25,10 @@
                   Starting Date: {{$bid->starting_date}} <br>
                   Ending Date: {{$bid->ending_date}} <br>
                   <b>Delivery Status: {{$bid->delivery_status}}</b> <br>
-                  <b>Buyer Name: {{$bid->buyer_name}}</b>
+                  <b>Buyer Name: {{$bid->buyer_name}}</b> <br>
+                  <b>Buyer Email: {{$bid->buyer_gmail}}</b> <br>
+                  <b>Buyer Phone: {{$bid->buyer_phone}}</b> <br>
+                  <a class="btn btn-success" href="{{route('delivered',$bid->id)}}">Delivered</a>
               </p>
               </div>
           </div>

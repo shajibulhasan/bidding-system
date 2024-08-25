@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5">
-                <div class="card">
-                    <h3 class="card-header text-center">Change Password</h3>
+                <div class="card" style="background-color: rgba(0,0,0, 0.1);">
+                    <h3 class="card-header text-light text-center">Change Password</h3>
                     <div class="card-body">
                         @if(session()->has('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">

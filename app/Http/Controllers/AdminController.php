@@ -43,6 +43,41 @@ class AdminController extends Controller
         ]); 
         return redirect()->route('runningBidAdmin');
     }
+    public function delivered(string $id)
+    {
+        $delivered = DB::table('bid')->where('id',$id)->update([
+            'delivery_status' => 'Delivered',
+        ]); 
+        if ($delivered) {
+            return redirect()->back()->with('success','Successfully Delivered');
+        } else {
+            echo "Error";
+        }
+        
+    }
+
+    public function pendingSold()
+    {
+        $mybid = DB::table('bid')->join('users', 'users.id', '=', 'bid.bidder_id')->select('bid.*', 'users.name as buyer_name', 'users.phone_number as buyer_phone', 'users.email as buyer_gmail')->where('status','sold')->where('delivery_status','Pending')->get();
+        if($mybid){
+            return view('pendingSold',['data'=>$mybid]);
+        }
+        else{
+            echo '<h1>Error!</h1>';
+        }
+        
+    }
+    public function deliveredProduct()
+    {
+        $mybid = DB::table('bid')->join('users', 'users.id', '=', 'bid.bidder_id')->select('bid.*', 'users.name as buyer_name', 'users.phone_number as buyer_phone', 'users.email as buyer_gmail')->where('status','sold')->where('delivery_status','Delivered')->get();
+        if($mybid){
+            return view('deliveredProduct',['data'=>$mybid]);
+        }
+        else{
+            echo '<h1>Error!</h1>';
+        }
+        
+    }
 
     /**
      * Show the form for creating a new resource.

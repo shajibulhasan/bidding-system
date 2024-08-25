@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="card">
-                    <h4 class="card-header">Update Profile <a class="btn btn-primary text-light" style="float: right;" href="{{ route('profile') }}">My Profile</a></h4>
+                <div class="card" style="background-color: rgba(0,0,0, 0.1);">
+                    <h4 class="card-header text-light">Update Profile <a class="btn btn-primary text-light" style="float: right;" href="{{ route('profile') }}">My Profile</a></h4>
                     <div class="card-body">
                         @if(session()->has('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -42,7 +42,7 @@
                             </div>
                             <br>
                             <div class="d-grid mx-auto">
-                                <button type="submit" class="btn btn-dark btn-block">Update Profile</button>
+                                <button type="submit" class="btn btn-success btn-block"><b>Update Profile</b></button>
                             </div>
                         </form>
 

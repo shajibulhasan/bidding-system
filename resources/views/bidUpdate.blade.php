@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="signup-form">    
+<div class="signup-form">    
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <h3 class="card-header text-center">Update Bid</h3>
+                    <h3 class="card-header text-light text-center">Update Bid</h3>
                     <div class="card-body">
                         @if(session()->has('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -55,6 +55,6 @@
             </div>
         </div>        
     </div> 
-</main>     
+</div>     
 
 @endsection

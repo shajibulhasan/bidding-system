@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <div class="card">
-                    <h3 class="card-header text-center">Create Bid</h3>
+                <div class="card" style="background-color: rgba(0,0,0, 0.1);">
+                    <h3 class="card-header text-light text-center">Create Bid</h3>
                     <div class="card-body">
                         @if(session()->has('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -66,7 +66,7 @@
                             </div>
                             <br>
                             <div class="col-12 d-grid mx-auto">
-                                <button type="submit" class="btn btn-primary" name="btnCreate">Request Bid</button>
+                                <button type="submit" class="btn btn-success" name="btnCreate"><b>Request Bid</b></button>
                             </div>
                         </form>
                     </div>

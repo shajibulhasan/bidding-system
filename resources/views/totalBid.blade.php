@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-        <div class="card">
-            <h4 class="card-header text-center">Total Bid</h4>
+        <div class="card" style="background-color: rgba(0,0,0, 0.1);">
+            <h4 class="card-header text-light text-center">Total Bid</h4>
             <div class="card-body">
                 <div class="row">
                     @if(session()->has('success'))

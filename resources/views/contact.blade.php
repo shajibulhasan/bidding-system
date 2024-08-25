@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="card">
+    <div class="card" style="background-color: rgba(255, 255, 255, 0.2);">
         <h1 class="text-center card-header">Help & Support</h1>
         <div class="card-body">
             <p class="text-center">Welcome to the Help & Support page. <br> We’re here to help! If you have any questions, concerns, or need assistance, please don’t hesitate to get in touch with us.</p>
