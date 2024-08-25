@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-     <div class="card">
-        <h4 class="card-header text-center">Running Bid</h4>
+     <div class="card" style="background-color: rgba(0,0,0, 0.1);">
+        <h4 class="card-header text-light text-center">Running Bid</h4>
         <div class="card-body">
             <div class="row">
                 @foreach($data as $mybid=>$bid)

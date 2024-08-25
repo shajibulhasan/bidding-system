@@ -37,6 +37,9 @@ Route::get('/approveBid/{id}',[AdminController::class, 'approveBid'])->name('app
 Route::get('/totalBid',[AdminController::class, 'totalBid'])->name('totalBid')->middleware(ValidateAdmin::class);
 Route::get('/requestedBid',[AdminController::class, 'requestedBid'])->name('requestedBid')->middleware(ValidateAdmin::class);
 Route::get('/runningBidAdmin',[UserDashboardController::class, 'runningBid'])->name('runningBidAdmin')->middleware(ValidateAdmin::class);
+Route::get('/pendingSold',[AdminController::class, 'pendingSold'])->name('pendingSold')->middleware(ValidateAdmin::class);
+Route::get('/deliveredProduct',[AdminController::class, 'deliveredProduct'])->name('deliveredProduct')->middleware(ValidateAdmin::class);
+Route::get('/delivered/{id}',[AdminController::class, 'delivered'])->name('delivered')->middleware(ValidateAdmin::class);
 
 
 

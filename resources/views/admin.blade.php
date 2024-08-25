@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container">
-<div class="card">
+<div class="card" style="background-color: rgba(0,0,0, 0.1);">
   <div class="card-header">
-    <h1 class="text-center">Admin Dashboard</h1>
+    <h1 class="text-center text-light">Admin Dashboard</h1>
   </div>
     <br>
    <div class="card-body">

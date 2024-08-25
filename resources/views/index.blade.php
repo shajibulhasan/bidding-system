@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-  <div class="card">
-    <h1 class="text-center card-header">Guest Dashboard</h1>
+<div class="container" >
+  <div class="card" style="background-color: rgba(0,0,0, 0.1);">
+    <h1 class="text-center text-light card-header">Guest Dashboard</h1>
   <div class="card-body">
     <br>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">

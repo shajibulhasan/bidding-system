@@ -43,23 +43,29 @@ class UserDashboardController extends Controller
         ]);
         
         $user_id = Auth::user()->id;
-        $imageName = time().'.'.$req->image->extension();        
-        $req->image->move(public_path('images'), $imageName);
-        $bid_create = DB::table('bid')->insert([
-            'name' => $req->name,
-            'description' => $req->description,
-            'starting_price' => $req->starting_price,
-            'starting_date' => $req->starting_date,
-            'ending_date' => $req->ending_date,
-            'user_id' => $user_id,
-            'image' => $imageName,
-        ]);
-        if($bid_create){
-            return redirect()->back()->with('success','You have successfully Bid Request');
+        if ($req->starting_date > now()) {
+            $imageName = time().'.'.$req->image->extension();        
+            $req->image->move(public_path('images'), $imageName);
+            $bid_create = DB::table('bid')->insert([
+                'name' => $req->name,
+                'description' => $req->description,
+                'starting_price' => $req->starting_price,
+                'starting_date' => $req->starting_date,
+                'ending_date' => $req->ending_date,
+                'user_id' => $user_id,
+                'image' => $imageName,
+            ]);
+            if($bid_create){
+                return redirect()->back()->with('success','Successfully Bid Request');
+            }
+            else{
+                return redirect()->back()->with('error','Your bid Cannot Create');
+            }            
         }
-        else{
-            return redirect()->back()->with('error','Your bid Cannot Create');
+        else {
+            return redirect()->back()->with('error','Cannot create bid, check your starting date');
         }
+        
 
     }
 
@@ -74,7 +80,7 @@ class UserDashboardController extends Controller
                     'bidder_id' => $user_id,
                 ]);
                 if($bid_update){
-                    return redirect()->back()->with('success','You have successfully Participate bid');
+                    return redirect()->back()->with('success','Successfully Participate bid');
                 }
                 else{
                     echo "Error!";
@@ -90,7 +96,7 @@ class UserDashboardController extends Controller
                     'bidder_id' => $user_id,
                 ]);
                 if($bid_update){
-                    return redirect()->back()->with('success','You have successfully Participate bid');
+                    return redirect()->back()->with('success','Successfully Participate bid');
                 }
                 else{
                     echo "Error!";
@@ -166,7 +172,7 @@ class UserDashboardController extends Controller
         if(File::exists(public_path('images/'.$imageName))){
             File::delete(public_path('images/'.$imageName));
             $user = DB::table('bid')->where('id',$id)->delete();
-            return redirect()->back()->with('success','You have successfully delete bid');
+            return redirect()->back()->with('success','Successfully delete bid');
         }
         else
         {
@@ -192,10 +198,10 @@ class UserDashboardController extends Controller
             if($bid_create){
                 if(File::exists(public_path('images/'.$imageOldName))){
                     File::delete(public_path('images/'.$imageOldName));                
-                    return redirect()->back()->with('success','You have successfully update bid');
+                    return redirect()->back()->with('success','Successfully update bid');
                 }
                 else{
-                    return redirect()->back()->with('success','You have successfully update bid');
+                    return redirect()->back()->with('success','Successfully update bid');
                 }
             }
             else{
@@ -211,7 +217,7 @@ class UserDashboardController extends Controller
                 'ending_date' => $req->ending_date,
             ]);
             if($bid_create){                           
-                return redirect()->back()->with('success','You have successfully update bid');
+                return redirect()->back()->with('success','Successfully update bid');
             }
             else{
                 echo "Error!";

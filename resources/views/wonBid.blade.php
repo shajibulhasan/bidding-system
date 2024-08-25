@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-  <div class="card">
-    <h4 class="card-header text-center">My Won Bid</h4>
+  <div class="card" style="background-color: rgba(0,0,0, 0.1);">
+    <h4 class="card-header text-light text-center">My Won Bid</h4>
     <div class="card-body">
       <div class="row">
           @foreach($data as $mybid=>$bid)
@@ -18,6 +18,7 @@
                   Ending Price: {{$bid->ending_price}} <br>
                   Starting Date: {{$bid->starting_date}} <br>
                   Ending Date: {{$bid->ending_date}} <br>
+                  Delivery Status: {{$bid->delivery_status}} <br>
               </p>
               </div>
           </div>
