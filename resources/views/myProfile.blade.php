@@ -8,7 +8,7 @@
             <strong class="text-success">{{session()->get('success')}}</strong>
             <br>
             @endif
-            <div class="card-body">
+            <div class="card-body card">
                 <div class="col-12">
                     <label for="">Name: {{ Auth::user()->name }}</label>
                 </div>

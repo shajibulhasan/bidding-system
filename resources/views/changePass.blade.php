@@ -6,7 +6,7 @@
             <div class="col-md-5">
                 <div class="card" style="background-color: rgba(0,0,0, 0.1);">
                     <h3 class="card-header text-light text-center">Change Password</h3>
-                    <div class="card-body">
+                    <div class="card-body card">
                         @if(session()->has('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong class="text-dark">{{session()->get('success')}}!</strong>
@@ -41,7 +41,7 @@
                             </div>
                             <br>
                             <div class="col-12 d-grid mx-auto">
-                                <button type="submit" class="btn btn-primary" name="btnCreate">Change Password</button>
+                                <button type="submit" class="btn btn-success" name="btnCreate">Change Password</button>
                             </div>
                         </form>
                     </div>

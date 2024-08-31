@@ -7,7 +7,7 @@
             <div class="col-md-3">
                 <div class="card" style="background-color: rgba(0,0,0, 0.1);">
                     <h3 class="card-header text-light text-center">Login</h3>
-                    <div class="card-body">
+                    <div class="card-body card">
                         @if(session()->has('success'))
                             <strong class="text-success">{{session()->get('success')}}</strong>
                         @endif
@@ -33,7 +33,7 @@
                             </div>
 
                             <div class="d-grid mx-auto">
-                                <button type="submit" class="btn btn-dark btn-block">Login</button>
+                                <button type="submit" class="btn btn-success btn-block">Login</button>
                             </div>
                         </form>
 

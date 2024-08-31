@@ -7,7 +7,15 @@
   <link rel="icon" type="image/png" sizes="16x16" href="dist/image/bid-icon.png">
   <title>Bidding System</title>
 
+  <link rel="stylesheet" href="/resources/css/style.css">
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <style>
+    .cards:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4), 0 4px 10px rgba(0,0,0,0.4);
+  }
+  </style>
 </head>
 <body style="background-image: url(images/bg2.jpg); width: 100%; height: 100vh; background-size: cover;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">

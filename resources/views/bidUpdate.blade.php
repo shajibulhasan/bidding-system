@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="signup-form">    
+    
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
                     <h3 class="card-header text-light text-center">Update Bid</h3>
-                    <div class="card-body">
+                    <div class="card-body card">
                         @if(session()->has('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong class="text-dark">{{session()->get('success')}}!</strong>
@@ -47,14 +47,13 @@
                                 <input type="file" name="image" id="image" class="form-control">
                             <br>
                             <div class="col-12 d-grid mx-auto">
-                                <button type="submit" class="btn btn-primary" name="btnCreate">Request Bid</button>
+                                <button type="submit" class="btn btn-success" name="btnCreate">Update Bid</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>        
-    </div> 
-</div>     
+    </div>   
 
 @endsection

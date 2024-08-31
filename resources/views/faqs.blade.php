@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     
-    <div class="card" style="background-color: rgba(255, 255, 255, 0.4);">
+    <div class="card" style="background-color: rgba(0, 0, 0, 0.1);">
         <h1 class="text-center card-header">FAQs</h1>
-        <div class="card-body">
+        <div class="card-body card">
             <p class="text-center">Welcome to our FAQ page. <br>Here you’ll find answers to common questions about our bidding system.</p>
             <div class="faq-section mt-4">
                 <ol>

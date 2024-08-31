@@ -7,7 +7,7 @@
             <div class="col-md-4">
                 <div class="card" style="background-color: rgba(0,0,0, 0.1);">
                     <h4 class="card-header text-light">Update Profile <a class="btn btn-primary text-light" style="float: right;" href="{{ route('profile') }}">My Profile</a></h4>
-                    <div class="card-body">
+                    <div class="card-body card">
                         @if(session()->has('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong class="text-dark">{{session()->get('success')}}!</strong>
