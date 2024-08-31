@@ -4,7 +4,7 @@
 <div class="container">
         <div class="card" style="background-color: rgba(0,0,0, 0.1);">
             <h4 class="card-header text-light text-center">Running Bid</h4>
-            <div class="card-body">
+            <div class="card-body card">
                 <div class="row">
                     @if(session()->has('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -19,7 +19,7 @@
                         </div>
                     @endif
                     @foreach($data as $mybid=>$bid)
-                    <div class="card m-2" style="width: 18rem;">                    
+                    <div class="card cards m-2" style="width: 18rem;">                    
                         <div class="card-body">
                         <img src="{{asset('images/'.$bid->image)}}" alt="" width="230px" height="180px">
                         <h5 class="card-title mt-2">Bid Information</h5>

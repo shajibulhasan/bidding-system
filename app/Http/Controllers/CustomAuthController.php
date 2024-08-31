@@ -104,6 +104,23 @@ class CustomAuthController extends Controller
 
     public function runningBid()
     {
+        $bid = DB::table('bid')->where('ending_date','<',now())->get(); 
+
+        if($bid){
+            foreach ($bid as $key => $value) {
+
+                if ($value->ending_price === 'No Bid' || $value->ending_price === 'Not start') {
+                    DB::table('bid')->where('id',$value->id)->update([
+                        'status' => 'Return',
+                        ]);
+                }else {
+                    DB::table('bid')->where('id',$value->id)->update([
+                        'status' => 'sold',
+                    ]);
+                }               
+            }
+        }
+
         $mybid = DB::table('bid')->where('status','running')->get(); 
         return view('runningBidIndex',['data'=>$mybid]);        
     }

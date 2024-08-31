@@ -126,9 +126,16 @@ class UserDashboardController extends Controller
 
         if($bid){
             foreach ($bid as $key => $value) {
-                DB::table('bid')->where('id',$value->id)->update([
-                    'status' => 'sold',
-                ]);
+
+                if ($value->ending_price === 'No Bid' || $value->ending_price === 'Not start') {
+                    DB::table('bid')->where('id',$value->id)->update([
+                        'status' => 'Return',
+                        ]);
+                }else {
+                    DB::table('bid')->where('id',$value->id)->update([
+                        'status' => 'sold',
+                    ]);
+                }               
             }
         }
         $mybid = DB::table('bid')->where('status','running')->get(); 

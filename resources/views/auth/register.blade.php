@@ -9,7 +9,7 @@
             <div class="col-md-4">
                 <div class="card" style="background-color: rgba(0,0,0, 0.1);">
                     <h3 class="card-header text-light text-center">Register User</h3>
-                    <div class="card-body">
+                    <div class="card-body card">
 
                         <form action="{{ route('register.post') }}" method="POST">
                             @csrf
@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="d-grid mx-auto">
-                                <button type="submit" class="btn btn-dark btn-block">Sign up</button>
+                                <button type="submit" class="btn btn-success btn-block">Sign up</button>
                             </div>
                         </form>
 

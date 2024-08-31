@@ -16,10 +16,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-            <div class="card-body">
+            <div class="card-body card">
                 <div class="row">
                     @foreach($data as $mybid=>$bid)
-                    <div class="card m-2" style="width: 18rem;">                    
+                    <div class="card cards m-2" style="width: 18rem;">                    
                         <div class="card-body">
                         <img src="{{asset('images/'.$bid->image)}}" alt="" width="230px" height="180px">
                         <h5 class="card-title mt-2">Bid Information</h5>
