@@ -56,7 +56,7 @@ class UserDashboardController extends Controller
                 'image' => $imageName,
             ]);
             if($bid_create){
-                return redirect()->back()->with('success','Successfully Bid Request');
+                return redirect()->back()->with('success','Bid Request Successful');
             }
             else{
                 return redirect()->back()->with('error','Your bid Cannot Create');
