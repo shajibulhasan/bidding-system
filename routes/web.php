@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PDFController;
 use App\Http\Middleware\ValidateUser;
 use App\Http\Middleware\ValidateAdmin;
 use App\Http\Middleware\ValidateGuest;
@@ -57,8 +58,13 @@ Route::post('update/profile', [CustomAuthController::class, 'updateProfile'])->n
 Route::view('/pass', 'changePass')->name('pass')->middleware(ValiateLogin::class);
 Route::view('/update', 'updateProfile')->name('update')->middleware(ValiateLogin::class);
 Route::view('/profile', 'myProfile')->name('profile')->middleware(ValiateLogin::class);
-// Route::view('/test', 'test')->name('test');
+Route::view('/test', 'test')->name('test');
 
+//PDF
+Route::get('generate-pdf-bid-sold/{id}', [PDFController::class, 'bidSoldPDF'])->name('bidSoldPDF');
+Route::get('generate-pdf-all-bid-sold', [PDFController::class, 'AllBidSoldPDF'])->name('AllBidSoldPDF');
+Route::get('generate-pdf-all-bid-won', [PDFController::class, 'AllBidWonPDF'])->name('AllBidWonPDF');
+Route::get('generate-pdf-all-my-bid', [PDFController::class, 'AllMyBidPDF'])->name('AllMyBidPDF');
 
 
 Route::get('contact', [HelpSupportController::class, 'contact'])->name('contact');

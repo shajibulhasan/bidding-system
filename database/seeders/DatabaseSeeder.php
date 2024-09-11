@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Shajibul Hasan Soaib',
             'email' => 'admin@gmail.com',
             'role' => 'admin',
-            'phone' => '01571171044',
+            'phone_number' => '01571171044',
             'password' => '12345',
         ]);
     }

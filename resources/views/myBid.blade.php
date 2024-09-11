@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
         <div class="card" style="background-color: rgba(0,0,0, 0.1);"> 
-            <h4 class="card-header text-light text-center">My Bid</h4>
+            <h4 class="card-header text-light text-center">My Bid <a class="btn btn-primary float-end" href="generate-pdf-all-my-bid">PDF</a></h4>
             @if(session()->has('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong class="text-dark">{{session()->get('success')}}!</strong>
