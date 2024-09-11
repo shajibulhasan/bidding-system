@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('ending_date');
             $table->string('image');
             $table->string('status')->default('Not Approve');
-            $table->string('delivery_status')->default('Pending');
+            $table->string('delivery_status')->default('Your product will be delivered within the next 72 hours.');
             $table->unsignedBigInteger('user_id'); 
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('bidder_id')->nullable(); 

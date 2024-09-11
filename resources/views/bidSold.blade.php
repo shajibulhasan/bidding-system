@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
   <div class="card" style="background-color: rgba(0,0,0, 0.1);">
-    <h4 class="card-header text-light text-center">My Sold Bid</h4>
+    <h4 class="card-header text-light text-center">My Sold Bid <a class="btn btn-primary float-end" href="generate-pdf-all-bid-sold">PDF</a></h4>
     <div class="card-body card">
       <div class="row">
           @foreach($data as $mybid=>$bid)
@@ -18,7 +18,11 @@
                   Ending Price: {{$bid->ending_price}} <br>
                   Starting Date: {{$bid->starting_date}} <br>
                   Ending Date: {{$bid->ending_date}} <br>
-                  <b>Delivery Status: {{$bid->delivery_status}}</b> <br>
+                  <b>Delivery Status: @if ($bid->delivery_status == 'Your product will be delivered within the next 72 hours.')
+                                          Pending
+                                      @else
+                                          {{$bid->delivery_status}}
+                                      @endif</b> <br>
                   <b>Buyer Name: {{$bid->buyer_name}}</b>
               </p>
               </div>

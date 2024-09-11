@@ -31,7 +31,8 @@
                             Starting Date: {{$bid->starting_date}} <br>
                             Ending Date: {{$bid->ending_date}} <br>
                         </p>
-                        <form action="{{ route('biddingprice.post', $bid->id) }}" method="post" enctype="multipart/form-data">
+                        @if (Auth::user()->id !=$bid->user_id)
+                            <form action="{{ route('biddingprice.post', $bid->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                                 <div class="form-group">
                                     <input type="text" placeholder="Biding Price" class="form-control" value="" id="" name="price">
@@ -41,6 +42,7 @@
                                     <button type="submit" class="btn btn-success" name="btnCreate">Participate</button>
                                 </div>
                             </form>
+                        @endif
                         </div>
                     </div>
                     @endforeach

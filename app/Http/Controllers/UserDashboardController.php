@@ -43,7 +43,7 @@ class UserDashboardController extends Controller
         ]);
         
         $user_id = Auth::user()->id;
-        if ($req->starting_date > now()) {
+        if ($req->starting_date > today()) {
             $imageName = time().'.'.$req->image->extension();        
             $req->image->move(public_path('images'), $imageName);
             $bid_create = DB::table('bid')->insert([
@@ -122,7 +122,7 @@ class UserDashboardController extends Controller
 
     public function runningBid()
     {
-        $bid = DB::table('bid')->where('ending_date','<',now())->get(); 
+        $bid = DB::table('bid')->where('ending_date','<',today())->get(); 
 
         if($bid){
             foreach ($bid as $key => $value) {

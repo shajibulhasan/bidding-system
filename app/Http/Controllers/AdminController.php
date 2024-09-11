@@ -58,7 +58,7 @@ class AdminController extends Controller
 
     public function pendingSold()
     {
-        $mybid = DB::table('bid')->join('users', 'users.id', '=', 'bid.bidder_id')->select('bid.*', 'users.name as buyer_name', 'users.phone_number as buyer_phone', 'users.email as buyer_gmail')->where('status','sold')->where('delivery_status','Pending')->get();
+        $mybid = DB::table('bid')->join('users', 'users.id', '=', 'bid.bidder_id')->select('bid.*', 'users.name as buyer_name', 'users.phone_number as buyer_phone', 'users.email as buyer_gmail')->where('status','sold')->where('delivery_status','Your product will be delivered within the next 72 hours.')->get();
         if($mybid){
             return view('pendingSold',['data'=>$mybid]);
         }
