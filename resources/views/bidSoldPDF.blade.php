@@ -61,11 +61,7 @@
                                         <td>{{$bid->starting_price}}</td>
                                         <td>{{$bid->ending_price}}</td>
                                         <td><img src="{{public_path('images/'.$bid->image)}}" alt="" width="80px" height="80px"></td>
-                                        @if ($bid->delivery_status == 'Your product will be delivered within the next 72 hours.')
-                                            <td>Pending</td>
-                                        @else
-                                            <td>{{$bid->delivery_status}}</td>
-                                        @endif
+                                        <td>{{$bid->delivery_status}}</td>                                       
                                         <td>{{$bid->buyer_name}}</td>
                                     </tr>
                                     @endforeach
