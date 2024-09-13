@@ -18,11 +18,7 @@
                   Ending Price: {{$bid->ending_price}} <br>
                   Starting Date: {{$bid->starting_date}} <br>
                   Ending Date: {{$bid->ending_date}} <br>
-                  <b>Delivery Status: @if ($bid->delivery_status == 'Your product will be delivered within the next 72 hours.')
-                                          Pending
-                                      @else
-                                          {{$bid->delivery_status}}
-                                      @endif</b> <br>
+                  <b>Delivery Status: {{$bid->delivery_status}} </b> <br>
                   <b>Buyer Name: {{$bid->buyer_name}}</b>
               </p>
               </div>
