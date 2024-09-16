@@ -6,7 +6,7 @@
 <div class="signup-form">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card" style="background-color: rgba(0,0,0, 0.1);">
                     <h3 class="card-header text-light text-center">Register User</h3>
                     <div class="card-body card">
