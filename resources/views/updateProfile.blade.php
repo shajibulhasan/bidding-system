@@ -4,7 +4,7 @@
 <div class="signup-form">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card" style="background-color: rgba(0,0,0, 0.1);">
                     <h4 class="card-header text-light">Update Profile <a class="btn btn-primary text-light" style="float: right;" href="{{ route('profile') }}">My Profile</a></h4>
                     <div class="card-body card">

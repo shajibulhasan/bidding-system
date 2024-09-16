@@ -79,7 +79,7 @@
                       <a class="nav-link" href="{{ route('runningBidAdmin')}}">Running Bid</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="{{ route('totalBid')}}">All Product</a>
+                      <a class="nav-link" href="{{ route('totalBid')}}">All Bid</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href="{{ route('requestedBid')}}">Requested Bid</a>
