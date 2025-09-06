@@ -1,66 +1,135 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Bidding System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full‑stack web application for running time‑boxed auctions where users can list items and place real‑time bids. Built with **Laravel (PHP)** on the backend and **Blade + Bootstrap + Vite** on the frontend.
 
-## About Laravel
+> This repository originally contained the default Laravel README. This file documents the actual project so collaborators can set up, run, and contribute quickly.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* User authentication & roles (Admin, Seller, Bidder)
+* Create and manage auction listings (title, description, starting price, images, start/end time)
+* Place bids with validation against current highest bid and auction window
+* Auto‑incrementing **current price** and **highest bidder** tracking
+* Auction states: Draft → Live → Ended (with automatic closing by schedule)
+* Seller dashboard: listings, active bids, outcomes
+* Admin panel: user management, category/setting management
+* Basic notifications (e.g., outbid / auction ended)
+* Responsive UI with Bootstrap
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🧰 Tech Stack
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+* **Backend:** Laravel (PHP), Eloquent ORM, Migrations, Seeders
+* **Frontend:** Blade templates, Bootstrap, Vite (asset bundling)
+* **Database:** MySQL
+* **Auth:** Laravel UI
+* **Other:** Laravel Scheduler/Queues (for closing auctions & notifications)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 📦 Project Structure (high level)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```
+app/                # Models, Policies, Services, Jobs, Notifications
+bootstrap/          # Framework bootstrap
+config/             # App configuration
+database/           # Migrations & seeders
+public/             # Public assets & entrypoint
+resources/
+  views/            # Blade templates (layouts, auctions, bids, auth, admin)
+  js/ css/          # Frontend assets (bundled by Vite)
+routes/
+  web.php           # Web routes (UI)
+  api.php           # API routes (if any)
+storage/            # App storage (logs, cache, uploads)
+```
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 🚀 Getting Started
 
-## Contributing
+### Prerequisites
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* PHP ≥ 8.1
+* Composer
+* Node.js ≥ 18 & NPM
+* MySQL
 
-## Code of Conduct
+### 1) Clone & install
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+git clone https://github.com/shajibulhasan/bidding-system.git
+cd bidding-system
 
-## Security Vulnerabilities
+# PHP deps
+composer install
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Node deps
+npm install
+```
 
-## License
+### 2) Environment
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+Update your `.env` with DB credentials and mail settings (optional but recommended for notifications):
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=bidding_system
+DB_USERNAME=root
+DB_PASSWORD=secret
+```
+
+### 3) Database
+
+```bash
+php artisan migrate --seed
+```
+
+> Seeding will insert basic roles, an admin user, and sample categories/listings.
+
+### 4) Build assets & run
+
+```bash
+# Development
+npm run dev
+php artisan serve
+
+# Or build for production
+npm run build
+```
+
+Open the app at: `http://127.0.0.1:8000`
+
+---
+
+
+---
+
+## 🧭 Usage Guide
+
+1. **Register/Login** to access bidding features.
+2. **Create an Auction** (seller): set title, description, start price, start & end time, upload one or more images.
+3. **Go Live**: auction automatically becomes live at the start time.
+4. **Place Bids** (bidders): highest valid bid wins when time ends.
+5. **Closing**: auctions move to *Ended* when the end time passes (via scheduler/cron).
+6. **Results**: seller sees winner & final price; winner gets a notification.
+
+> To run schedulers locally, add a cron entry:
+
+```
+* * * * * php /path/to/project/artisan schedule:run >> /dev/null 2>&1
+```
+
+## 📞 Contact
+
+Created by **Shajibul Hasan** — feel free to open an issue or reach out via the contact info on the profile.
