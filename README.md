@@ -30,23 +30,6 @@ A full‑stack web application for running time‑boxed auctions where users can
 
 ---
 
-## 📦 Project Structure (high level)
-
-```
-app/                # Models, Policies, Services, Jobs, Notifications
-bootstrap/          # Framework bootstrap
-config/             # App configuration
-database/           # Migrations & seeders
-public/             # Public assets & entrypoint
-resources/
-  views/            # Blade templates (layouts, auctions, bids, auth, admin)
-  js/ css/          # Frontend assets (bundled by Vite)
-routes/
-  web.php           # Web routes (UI)
-  api.php           # API routes (if any)
-storage/            # App storage (logs, cache, uploads)
-```
-
 ---
 
 ## 🚀 Getting Started
