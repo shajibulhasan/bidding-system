@@ -30,8 +30,6 @@ A full‑stack web application for running time‑boxed auctions where users can
 
 ---
 
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -92,9 +90,6 @@ npm run build
 ```
 
 Open the app at: `http://127.0.0.1:8000`
-
----
-
 
 ---
 
